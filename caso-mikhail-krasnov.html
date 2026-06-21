@@ -3,11 +3,179 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Caso Mikhail Krasnov - Análisis Jurídico de Tu Justicia sobre los procesos y debates constitucionales en torno a esta representación.">
+  <meta name="description" content="Caso Mikhail Krasnov - Crónica y análisis jurídico de la demanda de nulidad electoral liderada por David Alejandro Ávila y el Grupo Jurídico Legal de Colombia SAS.">
   <title>Caso Mikhail Krasnov - Tu Justicia</title>
   <link rel="stylesheet" href="css/styles.css">
   <link rel="icon" type="image/png" href="assets/logo_triangular.png">
   <link rel="shortcut icon" type="image/png" href="assets/logo_triangular.png">
+  <style>
+    .case-container {
+      max-width: 900px;
+      margin: 0 auto;
+      font-family: var(--font-body);
+    }
+    
+    .chronicle-text {
+      font-size: 1.15rem;
+      line-height: 1.9;
+      color: #2d3748;
+      font-weight: 400;
+    }
+    
+    .chronicle-text p {
+      margin-bottom: 25px;
+      text-align: justify;
+    }
+    
+    .chronicle-text p::first-letter {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--accent-gold);
+      float: left;
+      line-height: 1;
+      margin-right: 8px;
+    }
+    
+    .chronicle-text p:not(:first-of-type)::first-letter {
+      font-size: inherit;
+      font-weight: inherit;
+      color: inherit;
+      float: none;
+      line-height: inherit;
+      margin-right: 0;
+    }
+    
+    .case-highlight-card {
+      background: linear-gradient(135deg, #0f1924 0%, #152232 100%);
+      border-left: 4px solid var(--accent-gold);
+      border-radius: 0 12px 12px 0;
+      padding: 25px;
+      color: #ffffff;
+      margin: 35px 0;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+    
+    .case-highlight-card h3 {
+      color: var(--accent-gold);
+      margin-bottom: 10px;
+      font-family: var(--font-headers);
+      font-size: 1.3rem;
+    }
+
+    .case-grid-images {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+      margin: 35px 0;
+    }
+    
+    @media (max-width: 768px) {
+      .case-grid-images {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .case-photo-card {
+      background: #ffffff;
+      border: 1px solid rgba(15, 25, 36, 0.1);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.06);
+      transition: var(--transition-smooth);
+    }
+    
+    .case-photo-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+      border-color: rgba(197, 155, 39, 0.3);
+    }
+    
+    .case-photo-wrapper {
+      width: 100%;
+      height: 240px;
+      overflow: hidden;
+      background-color: #0f1924;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .case-photo-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition-smooth);
+    }
+    
+    .case-photo-card:hover .case-photo-wrapper img {
+      transform: scale(1.04);
+    }
+    
+    .case-photo-info {
+      padding: 15px 20px;
+    }
+    
+    .case-photo-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #1b4d3e; /* Green brand color */
+      margin-bottom: 5px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .case-photo-desc {
+      font-size: 0.85rem;
+      color: #4a5568;
+      line-height: 1.5;
+    }
+    
+    /* Sentecia Timeline styles */
+    .timeline-container {
+      margin: 45px 0;
+      position: relative;
+      padding-left: 30px;
+      border-left: 2px solid rgba(197, 155, 39, 0.3);
+    }
+    
+    .timeline-item {
+      position: relative;
+      margin-bottom: 30px;
+    }
+    
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -37px;
+      top: 5px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: var(--accent-gold);
+      border: 3px solid #ffffff;
+      box-shadow: 0 0 8px rgba(197, 155, 39, 0.6);
+    }
+    
+    .timeline-date {
+      font-weight: 700;
+      color: var(--accent-gold);
+      font-size: 0.95rem;
+      margin-bottom: 5px;
+    }
+    
+    .timeline-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #0f1924;
+      margin-bottom: 8px;
+    }
+    
+    .timeline-desc {
+      font-size: 0.9rem;
+      color: #4a5568;
+      line-height: 1.6;
+    }
+  </style>
 </head>
 <body>
 
@@ -38,7 +206,6 @@
     <!-- MENÚ LATERAL -->
     <aside class="sidebar" id="sidebar">
       <div>
-        <!-- Enlaces de Navegación Principal (Visibles solo en móvil) -->
         <div class="sidebar-top-nav">
           <h2 class="sidebar-title">Navegación</h2>
           <ul class="sidebar-menu" style="margin-bottom: 20px;">
@@ -67,9 +234,12 @@
     <!-- CONTENIDO PRINCIPAL -->
     <main>
       <!-- Cabecera de Página (Fondo Azul) -->
-      <header class="page-header section-blue">
-        <h1 class="page-title">Caso <span>Mikhail Krasnov</span></h1>
-        <div class="page-breadcrumb">
+      <header class="page-header section-blue" style="text-align: left;">
+        <div class="article-meta">Litigio de Alto Impacto | Tunja, Boyacá</div>
+        <h1 class="page-title" style="font-size: 2.2rem; line-height: 1.3; margin-top: 10px;">
+          DEMANDA DE NULIDAD ELECTORAL CONTRA MIKHAIL KRASNOV: EL TRIUNFO DE LA NORMA JURÍDICA
+        </h1>
+        <div class="page-breadcrumb" style="margin-top: 20px;">
           <a href="index.html">Inicio</a> &gt; <span>Caso Mikhail Krasnov</span>
         </div>
       </header>
@@ -77,23 +247,183 @@
       <!-- Cuerpo de Página (Fondo Blanco) -->
       <section class="section-white" style="flex-grow: 1; width: 100%;">
         <div class="page-content-wrapper">
-          <div class="article-card">
-            <h2 class="article-title">Análisis y Defensa del Debate Electoral</h2>
-            <p class="article-text">
-              El caso del alcalde electo de Tunja, <strong>Mikhail Krasnov</strong>, representa uno de los debates más interesantes y complejos del derecho constitucional y administrativo electoral en Colombia en los últimos años. Se discuten temas fundamentales sobre la doble nacionalidad, la contratación pública previa a la elección y el alcance de los derechos de participación política de extranjeros nacionalizados.
-            </p>
-          </div>
+          <div class="case-container">
+            
+            <div class="chronicle-text">
+              <p>
+                El gélido viento de Tunja parecía susurrar el inminente choque de fuerzas. En el centro del tablero político se encontraba Mikhail Krasnov, el inusual alcalde de origen ruso que había sacudido las elecciones y cautivado a las masas. Era un fenómeno mediático, un forastero que prometía erradicar la política tradicional. Pero mientras la ciudad celebraba, en los pasillos de la justicia se gestaba una tormenta perfecta liderada por una mente implacable: <strong>David Alejandro Ávila</strong>.
+              </p>
 
-          <div class="article-card">
-            <h2 class="article-title">Aspectos Jurídicos Clave</h2>
-            <p class="article-text">
-              Nuestro equipo de abogados analiza los pilares normativos de este proceso electoral:
-            </p>
-            <ul style="line-height: 1.8; margin-left: 20px; margin-bottom: 20px; font-weight: 400;">
-              <li><strong>Incompatibilidades de Contratación:</strong> Interpretación de la inhabilidad consagrada en la Ley 617 de 2000 referente a contratos con entidades estatales dentro del año anterior a la fecha de la elección.</li>
-              <li><strong>Derechos de Participación:</strong> Análisis de la igualdad en los derechos políticos de extranjeros nacionalizados frente a nacionales de nacimiento según el Artículo 100 de la Constitución Política.</li>
-              <li><strong>El Principio Pro Homine:</strong> Aplicación de la interpretación más favorable para la materialización del voto popular y el derecho fundamental a ser elegido.</li>
-            </ul>
+              <!-- Primer Bloque de Imagenes: Akerman y Krasnov en blanco hat -->
+              <div class="case-grid-images">
+                <div class="case-photo-card">
+                  <div class="case-photo-wrapper">
+                    <img src="assets/krasnov_ruso.jpg" alt="Mikhail Krasnov Alcalde de Tunja">
+                  </div>
+                  <div class="case-photo-info">
+                    <div class="case-photo-title">Mikhail Krasnov</div>
+                    <div class="case-photo-desc">Alcalde electo de Tunja, cuya votación popular sacudió el panorama de Boyacá.</div>
+                  </div>
+                </div>
+                
+                <div class="case-photo-card">
+                  <div class="case-photo-wrapper">
+                    <img src="assets/krasnov_akerman.jpg" alt="Yohir Akerman Columna de Prensa">
+                  </div>
+                  <div class="case-photo-info">
+                    <div class="case-photo-title">Denuncia en Medios</div>
+                    <div class="case-photo-desc">Columna periodística de Yohir Akerman en la que se señalaba la inhabilidad del mandatario.</div>
+                  </div>
+                </div>
+              </div>
+
+              <p>
+                Como Representante Legal del <strong>Grupo Jurídico Legal de Colombia SAS</strong>, David no se dejó deslumbrar por el espejismo del "Zar de Tunja". Sabía que la ley no entiende de popularidad, sino de hechos. Con la precisión de un cirujano y la paciencia de un maestro de ajedrez, su equipo comenzó a escudriñar cada documento, cada firma y cada movimiento del alcalde antes de su elección.
+              </p>
+
+              <p>
+                El ambiente en las oficinas del Grupo Jurídico era de pura adrenalina. Noches en vela frente a pantallas y montañas de expedientes finalmente rindieron frutos cuando David encontró el talón de Aquiles, la pieza que derrumbaría el castillo de naipes: <strong>un contrato</strong>. Krasnov había firmado como docente y contratista con la Universidad Pedagógica y Tecnológica de Colombia (UPTC) dentro de los doce meses previos a la elección. Una violación flagrante al régimen de inhabilidades consagrado en la legislación colombiana.
+              </p>
+
+              <!-- Segundo Bloque de Imagenes: Demanda Inhabilidad y Protestas -->
+              <div class="case-grid-images">
+                <div class="case-photo-card">
+                  <div class="case-photo-wrapper">
+                    <img src="assets/krasnov_inhabilidad.jpg" alt="Demanda por Inhabilidad Contractual">
+                  </div>
+                  <div class="case-photo-info">
+                    <div class="case-photo-title">Inhabilidad por Contratación</div>
+                    <div class="case-photo-desc">La prueba reina: contratación con entidad estatal (UPTC) en el periodo de restricción electoral.</div>
+                  </div>
+                </div>
+                
+                <div class="case-photo-card">
+                  <div class="case-photo-wrapper">
+                    <img src="assets/krasnov_protesta.jpg" alt="Protestas en la plaza de Tunja">
+                  </div>
+                  <div class="case-photo-info">
+                    <div class="case-photo-title">Presión Social en Boyacá</div>
+                    <div class="case-photo-desc">Manifestaciones y veedurías ciudadanas acompañando el debate de legalidad sobre la alcaldía.</div>
+                  </div>
+                </div>
+              </div>
+
+              <p>
+                La demanda de nulidad electoral fue radicada como un misil teledirigido. La batalla escaló rápidamente hasta los estrados del Tribunal y las imponentes salas del Consejo de Estado en Bogotá. El país entero tenía los ojos puestos en el caso.
+              </p>
+
+              <p>
+                La defensa de Krasnov intentó maniobrar desesperadamente. Argumentaron excepciones, apelaron a tecnicismos, e intentaron minimizar el impacto del contrato. Sin embargo, en cada audiencia, David Alejandro Ávila se mantenía inquebrantable. Su exposición fue una obra maestra de la litigación. No solo presentó las pruebas documentales irrefutables, sino que desarmó uno a uno los argumentos de la contraparte, demostrando que nadie, sin importar su origen o su fama, está por encima de la Constitución.
+              </p>
+
+              <!-- Tercer Bloque de Imagenes: Retiro de demanda y Denuncia penal -->
+              <div class="case-grid-images">
+                <div class="case-photo-card">
+                  <div class="case-photo-wrapper">
+                    <img src="assets/krasnov_retiro.jpg" alt="Retiro de Demanda por Juan Sebastian Ramirez">
+                  </div>
+                  <div class="case-photo-info">
+                    <div class="case-photo-title">Estrategias de la Defensa</div>
+                    <div class="case-photo-desc">Intento de desistimiento y maniobras procesales en torno a los contratos de prestación de servicios.</div>
+                  </div>
+                </div>
+                
+                <div class="case-photo-card">
+                  <div class="case-photo-wrapper">
+                    <img src="assets/krasnov_denuncia.jpg" alt="Denuncias penales contra Krasnov">
+                  </div>
+                  <div class="case-photo-info">
+                    <div class="case-photo-title">Denuncias y Derivados</div>
+                    <div class="case-photo-desc">Investigaciones penales de cohecho e interés indebido en celebración de contratos asociados.</div>
+                  </div>
+                </div>
+              </div>
+
+              <p>
+                El clímax llegó el día del fallo. El silencio en la sala era sepulcral antes de la lectura. Cuando el magistrado pronunció las palabras que decretaban la <strong>nulidad de la elección de Mikhail Krasnov</strong>, el eco resonó en toda la historia política de Boyacá. El alcalde caía, destituido por el peso implacable de la norma.
+              </p>
+
+              <p>
+                Las cámaras buscaron de inmediato al estratega detrás de la hazaña. David Alejandro Ávila, sereno pero victorioso, había demostrado el poder de la disciplina jurídica. El Grupo Jurídico Legal de Colombia SAS no solo había ganado un caso de altísimo perfil; había reescrito el destino de una ciudad entera, consolidándose como una fuerza imparable en el derecho colombiano.
+              </p>
+
+              <!-- Cuarto Bloque de Imagenes: Fiscalía y Retrato de David Alejandro Ávila -->
+              <div class="case-grid-images">
+                <div class="case-photo-card">
+                  <div class="case-photo-wrapper">
+                    <img src="assets/krasnov_fiscalia.jpg" alt="Fiscalía General de la Nación">
+                  </div>
+                  <div class="case-photo-info">
+                    <div class="case-photo-title">Investigaciones en Fiscalía</div>
+                    <div class="case-photo-desc">Audiencias penales y disciplinarias derivadas del análisis de contratación ilegal.</div>
+                  </div>
+                </div>
+                
+                <div class="case-photo-card">
+                  <div class="case-photo-wrapper">
+                    <img src="assets/krasnov_david.jpg" alt="David Alejandro Ávila - Grupo Jurídico Legal de Colombia SAS" style="object-position: top center;">
+                  </div>
+                  <div class="case-photo-info">
+                    <div class="case-photo-title">David Alejandro Ávila</div>
+                    <div class="case-photo-desc">Abogado y estratega legal que consolidó la nulidad electoral en las salas del Consejo de Estado.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- FICHA TÉCNICA DE LA SENTENCIA (Masterpiece Additions) -->
+            <div class="case-highlight-card">
+              <h3>Ficha Técnica del Proceso y Nulidad Electoral</h3>
+              <p style="font-size: 0.95rem; line-height: 1.6; margin-bottom: 0;">
+                <strong>Tribunal de Decisión:</strong> Sección Quinta del Consejo de Estado (Segunda Instancia) / Tribunal Administrativo de Boyacá (Primera Instancia).
+                <br>
+                <strong>Normativa Vulnerada:</strong> Artículo 95 de la Ley 136 de 1994 (modificado por el Artículo 37 de la Ley 617 de 2000), referente a la prohibición de suscribir contratos con entidades públicas en el municipio de elección en los 12 meses anteriores.
+                <br>
+                <strong>El Hecho Probado:</strong> Contrato de prestación de servicios docentes hora cátedra con la Universidad Pedagógica y Tecnológica de Colombia (UPTC), firmado e iniciado dentro de la zona de inhabilitación electoral.
+              </p>
+            </div>
+
+            <h2 style="font-family: var(--font-headers); color: #0f1924; font-size: 1.7rem; margin-top: 40px; border-left: 4px solid var(--accent-gold); padding-left: 15px;">
+              Línea de Tiempo del Litigio Estratégico
+            </h2>
+
+            <div class="timeline-container">
+              <div class="timeline-item">
+                <div class="timeline-date">Diciembre 2022</div>
+                <div class="timeline-title">Firma del Contrato Inhabilitante</div>
+                <div class="timeline-desc">Mikhail Krasnov suscribe un contrato con la UPTC como docente investigador, configurando involuntariamente el supuesto de hecho restrictivo.</div>
+              </div>
+              
+              <div class="timeline-item">
+                <div class="timeline-date">Octubre 2023</div>
+                <div class="timeline-title">Elecciones Regionales</div>
+                <div class="timeline-desc">Krasnov resulta electo alcalde de Tunja con una amplia votación popular, asumiendo su cargo como mandatario.</div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-date">Noviembre 2023</div>
+                <div class="timeline-title">Interposición de la Demanda de Nulidad</div>
+                <div class="timeline-desc">David Alejandro Ávila y el equipo del Grupo Jurídico radican la demanda de nulidad electoral tras desglosar las pruebas de contratación en el período prohibitivo.</div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-date">Marzo 2026</div>
+                <div class="timeline-title">Fallo del Consejo de Estado</div>
+                <div class="timeline-desc">La Sección Quinta del Consejo de Estado ratifica en segunda instancia la nulidad electoral, destituyendo a Krasnov y sentando un precedente judicial inamovible en Colombia.</div>
+              </div>
+            </div>
+
+            <!-- LLAMADO A LA ACCIÓN DE WHATSAPP -->
+            <div class="blog-whatsapp-cta" style="margin-top: 40px;">
+              <h3>¿Necesita Asesoría o Representación en Litigio Estratégico?</h3>
+              <p>
+                Casos de alta complejidad y derecho administrativo electoral. Consulte directamente con la abogada Jessica Lorena Ramírez a través de WhatsApp.
+              </p>
+              <a href="https://wa.me/573144414870?text=Hola%20Jessica%20Lorena.%20Estoy%20interesado%20en%20una%20Asesor%C3%ADa%20y%20Representaci%C3%B3n%20Jur%C3%ADdica.%20Por%20favor%20dame%20m%C3%A1s%20informaci%C3%B3n.%20Vengo%20de%20tujusticia.org" target="_blank" class="btn-whatsapp-cta">
+                Asesoría Gratuita por WhatsApp
+              </a>
+            </div>
+
           </div>
         </div>
       </section>
