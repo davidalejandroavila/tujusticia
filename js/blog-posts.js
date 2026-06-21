@@ -7,7 +7,7 @@ const BLOG_POSTS = [
     date: "5 sept 2025",
     readTime: "6 min de lectura",
     snippet: "Sabemos que la experiencia de arrendar un inmueble puede pasar de ser una fuente de ingresos a UNA VERDADERA PESADILLA cuando el inquilino INCUMPLE EL CONTRATO...",
-    image: "assets/blog_recupere_header.png",
+    image: "assets/blog_recupere_header.jpg",
     url: "blog-recupere-su-inmueble.html"
   }
 ];

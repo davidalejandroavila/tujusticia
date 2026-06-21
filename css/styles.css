@@ -28,6 +28,10 @@
   padding: 0;
 }
 
+html {
+  font-size: 19px;
+}
+
 html, body {
   width: 100%;
   height: 100%;
@@ -42,6 +46,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-headers);
   letter-spacing: 0.5px;
 }
+
 
 a {
   text-decoration: none;
@@ -248,6 +253,18 @@ main {
   border-top: 1px solid rgba(255, 255, 255, 0.05);
   padding-top: 20px;
 }
+
+/* Mobile top navigation container inside sidebar */
+.sidebar-top-nav {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .sidebar-top-nav {
+    display: block;
+  }
+}
+
 
 /* Sidebar overlay background */
 .sidebar-overlay {
@@ -1181,3 +1198,125 @@ main {
     font-size: 1.05rem;
   }
 }
+
+/* ==========================================
+   WHO WE ARE PAGE (QUIENES SOMOS) CUSTOM STYLES
+   ========================================== */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.about-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 40px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  transition: var(--transition-smooth);
+}
+
+.about-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent-gold);
+  box-shadow: 0 15px 35px rgba(197, 155, 39, 0.2);
+}
+
+.about-card h2 {
+  font-size: 1.7rem;
+  color: var(--accent-gold);
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.about-card p {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: var(--text-white);
+  font-weight: 400;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 25px;
+  max-width: 1200px;
+  margin: 30px auto 0 auto;
+}
+
+.service-card {
+  background-color: #f7f9fa;
+  border: 1px solid rgba(15, 25, 36, 0.12);
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.03);
+  transition: var(--transition-smooth);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 350px;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent-gold);
+  box-shadow: 0 15px 35px rgba(197, 155, 39, 0.15);
+}
+
+.service-icon-badge {
+  width: 60px;
+  height: 60px;
+  background-color: rgba(197, 155, 39, 0.1);
+  color: var(--accent-gold);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  border: 1px solid rgba(197, 155, 39, 0.2);
+}
+
+.service-card-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #090f16;
+  margin-bottom: 12px;
+}
+
+.service-card-text {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #4a5568;
+  margin-bottom: 25px;
+  flex-grow: 1;
+}
+
+.service-card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--accent-gold);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: var(--transition-smooth);
+}
+
+.service-card-link:hover {
+  color: var(--accent-gold-hover);
+  transform: translateX(4px);
+}
+

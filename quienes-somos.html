@@ -36,7 +36,18 @@
     <!-- MENÚ LATERAL -->
     <aside class="sidebar" id="sidebar">
       <div>
-        <h2 class="sidebar-title">Menú Principal</h2>
+        <!-- Enlaces de Navegación Principal (Visibles solo en móvil) -->
+        <div class="sidebar-top-nav">
+          <h2 class="sidebar-title">Navegación</h2>
+          <ul class="sidebar-menu" style="margin-bottom: 20px;">
+            <li class="sidebar-item"><a href="index.html">Inicio</a></li>
+            <li class="sidebar-item"><a href="blog.html">Blog</a></li>
+            <li class="sidebar-item active"><a href="quienes-somos.html">Quiénes Somos y Qué Hacemos</a></li>
+            <li class="sidebar-item"><a href="contacto.html">Contáctenos</a></li>
+          </ul>
+        </div>
+        
+        <h2 class="sidebar-title">Servicios y Artículos</h2>
         <ul class="sidebar-menu">
           <li class="sidebar-item"><a href="administracion-inmuebles.html">Administración de Inmuebles</a></li>
           <li class="sidebar-item"><a href="blogs-articulos.html">Blogs y Articulos</a></li>
@@ -61,37 +72,94 @@
         </div>
       </header>
 
-      <!-- Contenido en blanco contrastado -->
-      <section class="section-white" style="flex-grow: 1; width: 100%;">
-        <div class="page-content-wrapper">
-          <div class="article-card">
-            <h2 class="article-title">Nuestra Misión</h2>
-            <p class="article-text">
-              Somos un Consorcio Jurídico Legal en Colombia dedicado a proporcionar representación legal y asesoría de excelencia. Buscamos el equilibrio de la justicia y protegemos los intereses patrimoniales y constitucionales de nuestros clientes de manera ética, diligente e innovadora.
-            </p>
-          </div>
+      <!-- Sección: Misión y Visión (Fondo Gris) -->
+      <section class="section-gray" style="padding: 60px 4%;">
+        <div class="page-content-wrapper" style="padding: 0;">
+          <div class="about-grid">
+            
+            <div class="about-card section-blue">
+              <h2>Nuestra Misión</h2>
+              <p>
+                Somos un Consorcio Jurídico Legal en Colombia dedicado a proporcionar representación legal y asesoría de excelencia. Buscamos el equilibrio de la justicia y protegemos los intereses patrimoniales y constitucionales de nuestros clientes de manera ética, diligente e innovadora.
+              </p>
+            </div>
 
-          <div class="article-card">
-            <h2 class="article-title">Nuestra Visión</h2>
-            <p class="article-text">
-              Para el año 2030, seremos reconocidos como la firma jurídica líder en innovación legal digital y administración de inmuebles en Colombia, destacando por nuestra efectividad en litigios de alta complejidad, la defensa de los derechos ciudadanos y la excelencia en el servicio al cliente.
-            </p>
-          </div>
+            <div class="about-card section-blue">
+              <h2>Nuestra Visión</h2>
+              <p>
+                Para el año 2030, seremos reconocidos como la firma jurídica líder en innovación legal digital y administración de inmuebles en Colombia, destacando por nuestra efectividad en litigios de alta complejidad, la defensa de los derechos ciudadanos y la excelencia en el servicio al cliente.
+              </p>
+            </div>
 
-          <div class="article-card">
-            <h2 class="article-title">¿Qué Hacemos?</h2>
-            <p class="article-text">
-              Prestamos servicios de asesoramiento legal especializado a personas naturales, empresas y entidades. Nuestras áreas estratégicas de servicio incluyen:
-            </p>
-            <ul style="line-height: 1.8; margin-left: 20px; margin-bottom: 20px; font-weight: 400;">
-              <li>Asesoría y representación en procesos administrativos ante entidades del Estado.</li>
-              <li>Consultoría empresarial y derecho societario mercantil.</li>
-              <li>Gestión y administración segura de bienes raíces, contratos y cobro prejurídico.</li>
-              <li>Defensa judicial penal, constitucional (acciones de tutela) y civil.</li>
-            </ul>
           </div>
         </div>
       </section>
+
+      <!-- Sección: ¿Qué Hacemos? (Fondo Blanco) -->
+      <section class="section-white" style="padding: 60px 4%;">
+        <div class="page-content-wrapper" style="padding: 0;">
+          
+          <div style="text-align: center; margin-bottom: 40px;">
+            <h2 style="font-size: 2.2rem; color: #090f16; margin-bottom: 10px; font-family: var(--font-headers);">Nuestros Servicios <span>Estratégicos</span></h2>
+            <p style="color: #4a5568; max-width: 700px; margin: 0 auto; line-height: 1.6; font-size: 1.1rem;">
+              Prestamos servicios de asesoramiento legal especializado a personas naturales, empresas y entidades con metodologías modernas y respaldo ético.
+            </p>
+          </div>
+
+          <div class="services-grid">
+            
+            <!-- Tarjeta 1: Administración de Inmuebles -->
+            <div class="service-card">
+              <div>
+                <div class="service-icon-badge">🏢</div>
+                <h3 class="service-card-title">Administración Inmobiliaria</h3>
+                <p class="service-card-text">
+                  Gestión y administración segura de bienes raíces, contratos de arrendamiento blindados y cobranza prejurídica efectiva.
+                </p>
+              </div>
+              <a href="administracion-inmuebles.html" class="service-card-link">Saber Más &rarr;</a>
+            </div>
+
+            <!-- Tarjeta 2: Derecho Administrativo -->
+            <div class="service-card">
+              <div>
+                <div class="service-icon-badge">⚖️</div>
+                <h3 class="service-card-title">Derecho Administrativo</h3>
+                <p class="service-card-text">
+                  Asesoría y representación especializada en procesos, reclamaciones y litigios ante organismos del Estado y entidades públicas.
+                </p>
+              </div>
+              <a href="derecho-administrativo.html" class="service-card-link">Saber Más &rarr;</a>
+            </div>
+
+            <!-- Tarjeta 3: Derecho Comercial -->
+            <div class="service-card">
+              <div>
+                <div class="service-icon-badge">💼</div>
+                <h3 class="service-card-title">Derecho Comercial</h3>
+                <p class="service-card-text">
+                  Consultoría jurídica para empresas, derecho societario mercantil, contratos comerciales e insolvencia.
+                </p>
+              </div>
+              <a href="derecho-comercial.html" class="service-card-link">Saber Más &rarr;</a>
+            </div>
+
+            <!-- Tarjeta 4: Defensa General -->
+            <div class="service-card">
+              <div>
+                <div class="service-icon-badge">🛡️</div>
+                <h3 class="service-card-title">Defensa Judicial</h3>
+                <p class="service-card-text">
+                  Defensa integral y litigio en derecho penal, civil y constitucional (acciones de tutela, derechos de petición).
+                </p>
+              </div>
+              <a href="contacto.html" class="service-card-link">Saber Más &rarr;</a>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
     </main>
 
     <!-- FOOTER -->
