@@ -281,46 +281,56 @@
       
       <!-- Encabezado Scrolling -->
       <div class="waitlist-marquee">
-        <div>LISTA DE ESPERA 💣 LISTA DE ESPERA 💣 LISTA DE ESPERA 💣 LISTA DE ESPERA 💣</div>
+        <div>🔒 CUPO DE ASESORÍA GRATUITA RESERVADO • LISTA PRIORITARIA • ACCIÓN INMEDIATA 🔒</div>
       </div>
       
       <!-- Reloj de Cuenta Regresiva de 3 Minutos -->
       <div class="waitlist-timer-bar">
-        <span id="timer-label">⏰ OPORTUNIDAD POR TIEMPO LIMITADO:</span>
+        <span id="timer-label">🔥 EL BENEFICIO EXPIRA EN:</span>
         <span class="waitlist-timer-clock" id="timer-clock">03:00</span>
       </div>
       
       <!-- Cuerpo del Modal -->
       <div class="waitlist-body">
-        <h3 class="waitlist-title">Accede a beneficios Exclusivos al ser parte de nuestra lista prioritaria</h3>
-        <p class="waitlist-subtitle">CUÉNTANOS TU CASO - FORMULARIO DE INSCRIPCIÓN - MANTENTE INFORMADO</p>
+        <div style="text-align: center; margin-bottom: 20px;">
+          <span style="background-color: var(--accent-gold); color: var(--primary-bg); font-weight: 800; font-size: 0.75rem; padding: 4px 12px; border-radius: 12px; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 4px 10px rgba(197, 155, 39, 0.3); display: inline-block;">
+            Valorado en $250.000 COP • Hoy es GRATIS
+          </span>
+        </div>
+        <h3 class="waitlist-title" style="font-family: var(--font-headers); font-size: 1.4rem; color: var(--text-white); font-weight: 700; margin-bottom: 8px; text-align: center;">
+          ¿Estás listo para resolver tu problema legal hoy?
+        </h3>
+        <p class="waitlist-subtitle" style="background: none; border: none; padding: 0; color: var(--accent-gold); font-size: 0.85rem; font-weight: 500; margin-bottom: 25px; letter-spacing: 0.5px; text-transform: none; text-align: center; line-height: 1.5;">
+          ⚠️ Solo quedan 3 asesorías prioritarias gratuitas disponibles para hoy. Asegura tu cupo antes de que el reloj llegue a cero.
+        </p>
         
         <form id="waitlist-form">
           <div class="waitlist-form-group">
-            <label class="waitlist-form-label" for="wl-name">Nombre Completo *</label>
-            <input type="text" id="wl-name" class="waitlist-form-control" placeholder="Ingresa tu nombre..." required>
+            <label class="waitlist-form-label" for="wl-name" style="color: rgba(255,255,255,0.7); font-size: 0.8rem; font-weight: 500;">¿Cómo te llamas? *</label>
+            <input type="text" id="wl-name" class="waitlist-form-control" placeholder="Escribe tu nombre y apellido..." required>
           </div>
           
           <div class="waitlist-form-group">
-            <label class="waitlist-form-label" for="wl-email">Email *</label>
+            <label class="waitlist-form-label" for="wl-email" style="color: rgba(255,255,255,0.7); font-size: 0.8rem; font-weight: 500;">Tu mejor correo electrónico *</label>
             <input type="email" id="wl-email" class="waitlist-form-control" placeholder="correo@ejemplo.com" required>
           </div>
           
           <div class="waitlist-form-group">
-            <label class="waitlist-form-label" for="wl-phone">Teléfono</label>
-            <input type="tel" id="wl-phone" class="waitlist-form-control" placeholder="Ej: 3001234567">
+            <label class="waitlist-form-label" for="wl-phone" style="color: rgba(255,255,255,0.7); font-size: 0.8rem; font-weight: 500;">WhatsApp de contacto *</label>
+            <input type="tel" id="wl-phone" class="waitlist-form-control" placeholder="Ej: 3001234567" required>
           </div>
           
           <div class="waitlist-form-group">
-            <label class="waitlist-form-label" for="wl-case">Cuéntanos tu Caso</label>
-            <textarea id="wl-case" rows="3" class="waitlist-form-control" placeholder="Escribe aquí los detalles de tu problema legal..."></textarea>
+            <label class="waitlist-form-label" for="wl-case" style="color: rgba(255,255,255,0.7); font-size: 0.8rem; font-weight: 500;">Describe tu problema legal brevemente *</label>
+            <textarea id="wl-case" rows="2" class="waitlist-form-control" placeholder="¿Cuál es tu caso o duda legal?..." required></textarea>
           </div>
           
-          <button type="submit" class="waitlist-btn" id="waitlist-submit-btn">Enviar y Obtener Asesoría Gratis</button>
+          <button type="submit" class="waitlist-btn" id="waitlist-submit-btn">Asegurar Mi Asesoría Gratuita Ahora</button>
         </form>
       </div>
     </div>
   </div>
+
 
   <!-- Carga de datos del blog -->
   <script src="js/blog-posts.js"></script>
