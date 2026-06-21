@@ -163,4 +163,26 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
   }
+
+  // ==========================================
+  // TAB VISIBILITY TITLE CHANGER (NEUROMARKETING)
+  // ==========================================
+  const originalTitle = document.title;
+  let titleAlertInterval;
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      // Alternate tab title when the user switches tabs
+      let toggle = false;
+      titleAlertInterval = setInterval(() => {
+        document.title = toggle ? "💬 Mensaje sin leer" : "⚠️ Tu consulta está pendiente";
+        toggle = !toggle;
+      }, 2000);
+    } else {
+      // Restore original title immediately when they come back
+      clearInterval(titleAlertInterval);
+      document.title = originalTitle;
+    }
+  });
 });
+
