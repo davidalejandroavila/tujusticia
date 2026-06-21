@@ -199,7 +199,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const link = document.createElement('a');
     link.className = 'whatsapp-float-btn';
     link.target = '_blank';
-    link.href = 'https://wa.me/573118823775?text=' + encodeURIComponent('Hola Jessica Lorena. Estoy interesado en una Asesoría y Representación Jurídica. Por favor dame más información. Vengo de tujusticia.org');
+    link.href = 'https://wa.me/573144414870?text=' + encodeURIComponent('Hola Jessica Lorena. Estoy interesado en una Asesoría y Representación Jurídica. Por favor dame más información. Vengo de tujusticia.org');
     link.setAttribute('aria-label', 'Asesoría gratis por WhatsApp');
     
     link.innerHTML = `<span class="whatsapp-btn-text">Asesoría Gratis por WhatsApp</span>
