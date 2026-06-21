@@ -1,127 +1,1276 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Administración de Inmuebles - Tu Justicia. Asesoría legal experta en arrendamientos, cobro prejurídico y contratos inmobiliarios en Colombia.">
-  <title>Administración de Inmuebles - Tu Justicia</title>
-  <link rel="stylesheet" href="css/styles.css">
-  <link rel="icon" type="image/png" href="assets/logo_triangular.png">
-  <link rel="shortcut icon" type="image/png" href="assets/logo_triangular.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicios Inmobiliarios y Construcción Premium - Tu Justicia</title>
+    
+    <!-- Tailwind CSS Configurado -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#0B0A1A',     // Azul medianoche muy oscuro
+                            purple: '#6B21A8',   // Púrpura elegante
+                            fuchsia: '#D946EF',  // Fucsia vibrante
+                            light: '#F8FAFC',    // Gris súper claro para fondos
+                            gold: '#C5A85C'      // Dorado de marca
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'], // Fuente más moderna y redondeada
+                    },
+                    animation: {
+                        'gradient-x': 'gradient-x 3s ease infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        'gradient-x': {
+                            '0%, 100%': {
+                                'background-size': '200% 200%',
+                                'background-position': 'left center'
+                            },
+                            '50%': {
+                                'background-size': '200% 200%',
+                                'background-position': 'right center'
+                            },
+                        },
+                        'float': {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Iconos -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        body {
+            background-color: #F8FAFC;
+        }
+
+        /* Ocultar barra de desplazamiento interna */
+        ::-webkit-scrollbar {
+            width: 0px;
+            background: transparent;
+        }
+        html {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        /* Glassmorphism premium */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+        
+        .glass-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 30px 60px rgba(217, 70, 239, 0.15);
+            border-color: rgba(217, 70, 239, 0.3);
+        }
+
+        /* Gradiente de texto */
+        .text-gradient {
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-image: linear-gradient(to right, #D946EF, #6B21A8);
+        }
+
+        /* Líneas neón sutiles para texto en fondo oscuro */
+        .text-neon-lines {
+            color: rgba(255, 255, 255, 0.9);
+            -webkit-text-stroke: 1px rgba(217, 70, 239, 0.6); 
+            text-shadow: 0 0 15px rgba(217, 70, 239, 0.4), 0 0 25px rgba(107, 33, 168, 0.3);
+        }
+        
+        /* Botón hamburguesa */
+        .hamburger-span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background-color: #C5A85C;
+            transition: all 0.3s ease;
+        }
+        .hamburger-active .span-1 {
+            transform: translateY(7px) rotate(45deg);
+        }
+        .hamburger-active .span-2 {
+            opacity: 0;
+        }
+        .hamburger-active .span-3 {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+    </style>
 </head>
-<body>
+<body class="antialiased overflow-x-hidden selection:bg-brand-fuchsia selection:text-white">
 
-  <div class="app-container">
-    <div class="sidebar-overlay" id="sidebar-overlay"></div>
-
-    <!-- NAVBAR SUPERIOR -->
-    <header class="navbar">
-      <div class="nav-left">
-        <button class="hamburger-btn" id="hamburger-btn" aria-label="Abrir menú de navegación">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-        <div class="nav-logo">
-          <img src="assets/logo_escudo.png" alt="Escudo Tu Justicia">
-          <span class="nav-brand">TU <span>JUSTICIA</span></span>
+    <!-- HEADER / NAVBAR UNIFICADA -->
+    <header class="fixed top-0 left-0 w-full h-[70px] bg-brand-dark border-b border-brand-gold/20 flex items-center justify-between px-6 z-50">
+        <div class="flex items-center gap-4">
+            <button id="hamburger-btn" class="flex flex-col gap-1.5 focus:outline-none md:hidden" aria-label="Abrir menú">
+                <span class="hamburger-span span-1"></span>
+                <span class="hamburger-span span-2"></span>
+                <span class="hamburger-span span-3"></span>
+            </button>
+            <div class="flex items-center gap-2.5">
+                <img src="assets/logo_escudo.png" alt="Escudo Tu Justicia" class="h-[50px] w-auto object-contain">
+                <span class="font-sans text-xl font-bold tracking-wider text-white">TU <span class="text-brand-gold">JUSTICIA</span></span>
+            </div>
         </div>
-      </div>
-      <nav class="nav-links">
-        <a href="index.html" class="nav-item">INICIO</a>
-        <a href="blog.html" class="nav-item">BLOG</a>
-        <a href="quienes-somos.html" class="nav-item">QUIENES SOMOS Y QUÉ HACEMOS</a>
-        <a href="contacto.html" class="nav-item">CONTÁCTENOS</a>
-      </nav>
+        <nav class="hidden md:flex items-center gap-8">
+            <a href="index.html" class="text-sm font-bold text-white hover:text-brand-gold transition-colors">INICIO</a>
+            <a href="blog.html" class="text-sm font-bold text-white hover:text-brand-gold transition-colors">BLOG</a>
+            <a href="quienes-somos.html" class="text-sm font-bold text-white hover:text-brand-gold transition-colors">QUIENES SOMOS Y QUÉ HACEMOS</a>
+            <a href="contacto.html" class="text-sm font-bold text-white hover:text-brand-gold transition-colors">CONTÁCTENOS</a>
+        </nav>
     </header>
 
-    <!-- MENÚ LATERAL -->
-    <aside class="sidebar" id="sidebar">
-      <div>
-        <!-- Enlaces de Navegación Principal (Visibles solo en móvil) -->
-        <div class="sidebar-top-nav">
-          <h2 class="sidebar-title">Navegación</h2>
-          <ul class="sidebar-menu" style="margin-bottom: 20px;">
-            <li class="sidebar-item"><a href="index.html">Inicio</a></li>
-            <li class="sidebar-item"><a href="blog.html">Blog</a></li>
-            <li class="sidebar-item"><a href="quienes-somos.html">Quiénes Somos y Qué Hacemos</a></li>
-            <li class="sidebar-item"><a href="contacto.html">Contáctenos</a></li>
-          </ul>
+    <!-- MENÚ LATERAL MÓVIL SIDEBAR -->
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black/60 z-40 hidden transition-opacity duration-300"></div>
+    <aside id="sidebar" class="fixed top-[70px] left-0 h-[calc(100vh-70px)] w-[280px] bg-brand-dark border-r border-brand-gold/20 z-40 transform -translate-x-full transition-transform duration-300 overflow-y-auto p-6 flex flex-col justify-between">
+        <div>
+            <div class="mb-8">
+                <h2 class="text-sm font-bold tracking-widest text-brand-gold uppercase mb-4">Navegación</h2>
+                <ul class="space-y-3">
+                    <li><a href="index.html" class="text-gray-300 hover:text-white transition-colors block py-1 font-medium">Inicio</a></li>
+                    <li><a href="blog.html" class="text-gray-300 hover:text-white transition-colors block py-1 font-medium">Blog</a></li>
+                    <li><a href="quienes-somos.html" class="text-gray-300 hover:text-white transition-colors block py-1 font-medium">Quiénes Somos y Qué Hacemos</a></li>
+                    <li><a href="contacto.html" class="text-gray-300 hover:text-white transition-colors block py-1 font-medium">Contáctenos</a></li>
+                </ul>
+            </div>
+            <div>
+                <h2 class="text-sm font-bold tracking-widest text-brand-gold uppercase mb-4">Servicios y Artículos</h2>
+                <ul class="space-y-3">
+                    <li><a href="administracion-inmuebles.html" class="text-white font-bold transition-colors block py-1">Administración de Inmuebles</a></li>
+                    <li><a href="blogs-articulos.html" class="text-gray-300 hover:text-white transition-colors block py-1 font-medium">Blogs y Artículos</a></li>
+                    <li><a href="caso-mikhail-krasnov.html" class="text-gray-300 hover:text-white transition-colors block py-1 font-medium">Caso Mikhail Krasnov</a></li>
+                    <li><a href="derecho-administrativo.html" class="text-gray-300 hover:text-white transition-colors block py-1 font-medium">Derecho Administrativo</a></li>
+                    <li><a href="derecho-comercial.html" class="text-gray-300 hover:text-white transition-colors block py-1 font-medium">Derecho Comercial</a></li>
+                </ul>
+            </div>
         </div>
-        
-        <h2 class="sidebar-title">Servicios y Artículos</h2>
-        <ul class="sidebar-menu">
-          <li class="sidebar-item active"><a href="administracion-inmuebles.html">Administración de Inmuebles</a></li>
-          <li class="sidebar-item"><a href="blogs-articulos.html">Blogs y Articulos</a></li>
-          <li class="sidebar-item"><a href="caso-mikhail-krasnov.html">Caso Mikhail Krasnov</a></li>
-          <li class="sidebar-item"><a href="derecho-administrativo.html">Derecho Administrativo</a></li>
-          <li class="sidebar-item"><a href="derecho-comercial.html">Derecho Comercial</a></li>
-        </ul>
-      </div>
-      <div class="sidebar-footer">
-        <p>Tu Justicia &copy; 2026</p>
-        <p style="font-size: 0.65rem; color: var(--accent-gold); margin-top: 5px;">NIT. 901.487.297-9</p>
-      </div>
+        <div class="pt-6 border-t border-brand-gold/10 text-xs text-gray-500">
+            <p>Tu Justicia &copy; 2026</p>
+            <p class="text-brand-gold mt-1">NIT. 901.487.297-9</p>
+        </div>
     </aside>
 
-    <!-- CONTENIDO PRINCIPAL -->
-    <main>
-      <!-- Cabecera de Página (Fondo Azul) -->
-      <header class="page-header section-blue">
-        <h1 class="page-title">Administración <span>de Inmuebles</span></h1>
-        <div class="page-breadcrumb">
-          <a href="index.html">Inicio</a> &gt; <span>Administración de Inmuebles</span>
-        </div>
-      </header>
+    <!-- CONTAINER PRINCIPAL PARA LAS VISTAS DINÁMICAS -->
+    <main class="pt-[70px] min-h-screen flex flex-col">
 
-      <!-- Cuerpo de Página (Fondo Blanco) -->
-      <section class="section-white" style="flex-grow: 1; width: 100%;">
-        <div class="page-content-wrapper">
-          <div class="article-card">
-            <h2 class="article-title">Seguridad Jurídica para su Patrimonio Inmobiliario</h2>
-            <p class="article-text">
-              En <strong>Tu Justicia</strong> le ofrecemos un servicio integral de administración de inmuebles y asesoramiento legal diseñado para proteger su inversión de cualquier riesgo. Nos encargamos de todo el proceso de arrendamiento y administración con el respaldo jurídico de nuestros abogados.
-            </p>
-          </div>
+        <!-- ==================== VISTA 1: MAIN LIST (PRIMERA PARTE) ==================== -->
+        <div id="view-main" class="view-panel transition-all duration-300 flex flex-col flex-grow">
+            <!-- Hero Section -->
+            <section class="relative pt-32 pb-20 md:pt-48 md:pb-32 flex items-center justify-center overflow-hidden bg-brand-dark">
+                <!-- Fondo con superposición de gradiente y desenfoque -->
+                <div class="absolute inset-0 z-0">
+                    <img src="https://images.unsplash.com/photo-1541888081622-15cb3ac3d484?q=80&w=2070&auto=format&fit=crop" alt="Construcción" class="w-full h-full object-cover opacity-40" />
+                    <div class="absolute inset-0 bg-gradient-to-b from-brand-dark/80 via-brand-dark/90 to-brand-dark"></div>
+                    
+                    <!-- Orbes de luz neuromarketing -->
+                    <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-brand-purple/40 rounded-full mix-blend-screen filter blur-[100px] animate-pulse"></div>
+                    <div class="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-brand-fuchsia/30 rounded-full mix-blend-screen filter blur-[120px] animate-pulse" style="animation-delay: 2s;"></div>
+                </div>
+                
+                <div class="relative z-10 max-w-5xl mx-auto px-6 text-center">
+                    <span class="inline-block py-1 px-4 rounded-full bg-white/10 text-brand-fuchsia border border-brand-fuchsia/30 text-sm font-bold tracking-widest uppercase mb-6 backdrop-blur-sm animate-float">
+                        Seguridad & Rentabilidad
+                    </span>
+                    <h1 class="text-5xl md:text-7xl font-black mb-8 leading-[1.1] tracking-tight text-neon-lines">
+                        Transformamos tu patrimonio en <br class="hidden md:block"/>
+                        <span class="text-gradient animate-gradient-x" style="-webkit-text-stroke: 0;">Tranquilidad Absoluta</span>
+                    </h1>
+                    <p class="text-xl md:text-2xl text-gray-300 mb-10 max-w-3xl mx-auto font-light leading-relaxed">
+                        Administramos tus inmuebles y proyectos de construcción con respaldo legal, técnico y financiero. <strong class="text-white font-semibold">Tú inviertes, nosotros nos encargamos de todo.</strong>
+                    </p>
+                    
+                    <button onclick="scrollToServices()" class="group relative px-8 py-4 bg-gradient-to-r from-brand-fuchsia to-brand-purple text-white font-bold text-lg rounded-full overflow-hidden shadow-[0_0_40px_rgba(217,70,239,0.4)] hover:shadow-[0_0_60px_rgba(217,70,239,0.6)] transition-all duration-300 transform hover:scale-105">
+                        <div class="absolute inset-0 bg-white/20 group-hover:translate-x-full transition-transform duration-500 ease-out -skew-x-12 -translate-x-full"></div>
+                        <span class="relative flex items-center justify-center gap-2">
+                            Descubre cómo lo hacemos <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
+                        </span>
+                    </button>
+                </div>
+                
+                <!-- Flecha de scroll -->
+                <div class="absolute bottom-10 left-1/2 -translate-x-1/2 text-white/50 animate-bounce cursor-pointer" onclick="scrollToServices()">
+                    <i data-lucide="chevron-down" class="w-8 h-8"></i>
+                </div>
+            </section>
 
-          <div class="article-card">
-            <h2 class="article-title">Nuestros Servicios Inmobiliarios</h2>
-            <p class="article-text">
-              Le acompañamos en cada etapa de la gestión de su inmueble:
-            </p>
-            <ul style="line-height: 1.8; margin-left: 20px; margin-bottom: 20px; font-weight: 400;">
-              <li><strong>Estudio de Solvencia:</strong> Análisis profundo y jurídico del perfil del arrendatario y sus codeudores.</li>
-              <li><strong>Redacción de Contratos:</strong> Elaboración de contratos de arrendamiento personalizados que mitiguen riesgos y cumplan rigurosamente con la Ley 820 de 2003.</li>
-              <li><strong>Recaudo y Cobro:</strong> Gestión de recaudo mensual de cánones de arrendamiento y cuotas de administración.</li>
-              <li><strong>Cobro Prejurídico y Judicial:</strong> Acciones de cobro inmediatas ante retrasos y procesos de restitución de inmueble arrendado en tiempo récord.</li>
-            </ul>
-          </div>
+            <!-- Servicios Section -->
+            <section id="services-grid" class="relative max-w-7xl mx-auto px-4 py-24 z-20 -mt-10">
+                <div class="text-center mb-20">
+                    <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-4">Nuestros Servicios Estratégicos</h2>
+                    <p class="text-lg text-gray-500 max-w-2xl mx-auto">Selecciona uno de nuestros servicios para ver los detalles, análisis comparativos de riesgos y alcances legales de nuestra solución.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Card 1: Administración Integral de Inmuebles -->
+                    <div onclick="switchView('view-inmuebles')" class="glass-card rounded-3xl p-8 relative overflow-hidden group">
+                        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-fuchsia to-brand-purple transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+                        <div class="w-14 h-14 rounded-2xl bg-brand-fuchsia/10 flex items-center justify-center mb-6 text-brand-fuchsia group-hover:scale-110 transition-transform duration-300">
+                            <i data-lucide="building-2" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4 leading-tight">Administración Integral <br> <span class="text-brand-purple">de Inmuebles</span></h3>
+                        <p class="text-gray-600 mb-8 text-sm leading-relaxed">
+                            Gestionamos tus propiedades como si fueran nuestras. Garantizamos la valorización de tu inmueble, ingresos seguros y cero preocupaciones legales.
+                        </p>
+                        <div class="text-brand-fuchsia font-bold text-sm flex items-center gap-1 group-hover:translate-x-2 transition-transform duration-300">
+                            Ver detalles del servicio <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Dirección y Supervisión de Obras Civiles -->
+                    <div onclick="switchView('view-obras')" class="glass-card rounded-3xl p-8 relative overflow-hidden group">
+                        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-fuchsia to-brand-purple transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+                        <div class="w-14 h-14 rounded-2xl bg-brand-purple/10 flex items-center justify-center mb-6 text-brand-purple group-hover:scale-110 transition-transform duration-300">
+                            <i data-lucide="hard-hat" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4 leading-tight">Dirección y Supervisión <br> <span class="text-brand-purple">de Obras Civiles</span></h3>
+                        <p class="text-gray-600 mb-8 text-sm leading-relaxed">
+                            Un equipo técnico y jurídico que supervisa cada etapa. Tú te enfocas en el negocio, nosotros en que la calidad y el presupuesto se cumplan.
+                        </p>
+                        <div class="text-brand-fuchsia font-bold text-sm flex items-center gap-1 group-hover:translate-x-2 transition-transform duration-300">
+                            Ver detalles del servicio <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Gestión de Proyectos de Vivienda -->
+                    <div onclick="switchView('view-vivienda')" class="glass-card rounded-3xl p-8 relative overflow-hidden group">
+                        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-fuchsia to-brand-purple transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+                        <div class="w-14 h-14 rounded-2xl bg-indigo-100 flex items-center justify-center mb-6 text-indigo-600 group-hover:scale-110 transition-transform duration-300">
+                            <i data-lucide="home" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4 leading-tight">Gestión de Proyectos <br> <span class="text-brand-purple">de Vivienda</span></h3>
+                        <p class="text-gray-600 mb-8 text-sm leading-relaxed">
+                            Transformamos tu idea en un proyecto inmobiliario rentable, asegurando que tu inversión cumpla con toda la normatividad colombiana.
+                        </p>
+                        <div class="text-brand-fuchsia font-bold text-sm flex items-center gap-1 group-hover:translate-x-2 transition-transform duration-300">
+                            Ver detalles del servicio <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                        </div>
+                    </div>
+
+                    <!-- Card 4: Representación Legal en Propiedad -->
+                    <div onclick="switchView('view-representacion')" class="glass-card rounded-3xl p-8 relative overflow-hidden group">
+                        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-fuchsia to-brand-purple transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+                        <div class="w-14 h-14 rounded-2xl bg-orange-100 flex items-center justify-center mb-6 text-orange-600 group-hover:scale-110 transition-transform duration-300">
+                            <i data-lucide="scale" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4 leading-tight">Representación Legal en <br> <span class="text-brand-purple">Propiedad</span></h3>
+                        <p class="text-gray-600 mb-8 text-sm leading-relaxed">
+                            Protegemos tus derechos de forma implacable. Te representamos en procesos judiciales, extrajudiciales, compraventas y propiedad horizontal.
+                        </p>
+                        <div class="text-brand-fuchsia font-bold text-sm flex items-center gap-1 group-hover:translate-x-2 transition-transform duration-300">
+                            Ver detalles del servicio <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                        </div>
+                    </div>
+
+                    <!-- Card 5: Admin de Negocios e Inversiones -->
+                    <div onclick="switchView('view-negocios')" class="glass-card rounded-3xl p-8 relative overflow-hidden group">
+                        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-fuchsia to-brand-purple transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+                        <div class="w-14 h-14 rounded-2xl bg-teal-100 flex items-center justify-center mb-6 text-teal-600 group-hover:scale-110 transition-transform duration-300">
+                            <i data-lucide="trending-up" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4 leading-tight">Admin. de Negocios e <br> <span class="text-brand-purple">Inversiones</span></h3>
+                        <p class="text-gray-600 mb-8 text-sm leading-relaxed">
+                            Si tienes capital, nosotros generamos la rentabilidad. Optimizamos ingresos y reducimos riesgos sin que te involucres en la operación diaria.
+                        </p>
+                        <div class="text-brand-fuchsia font-bold text-sm flex items-center gap-1 group-hover:translate-x-2 transition-transform duration-300">
+                            Ver detalles del servicio <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                        </div>
+                    </div>
+
+                    <!-- Card 6: Gestión Integral 360° -->
+                    <div onclick="switchView('view-gestion360')" class="glass-card rounded-3xl p-8 relative overflow-hidden group border-brand-purple/20 bg-gradient-to-br from-white to-brand-fuchsia/5 shadow-xl md:col-span-2 lg:col-span-1">
+                        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-fuchsia to-brand-purple transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-brand-fuchsia to-brand-purple flex items-center justify-center mb-6 text-white shadow-lg group-hover:scale-110 transition-transform duration-300 animate-pulse">
+                            <i data-lucide="gem" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4 leading-tight text-gradient">Gestión Integral 360°</h3>
+                        <p class="text-gray-600 mb-8 text-sm leading-relaxed font-medium">
+                            Tu aliado estratégico absoluto. Desde la compra del terreno hasta la venta final. Tú decides tu nivel de participación; nosotros garantizamos el éxito rentable.
+                        </p>
+                        <div class="text-brand-fuchsia font-bold text-sm flex items-center gap-1 group-hover:translate-x-2 transition-transform duration-300">
+                            Ver detalles del servicio <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Separador Visual Dinámico con Imagen -->
+            <section class="max-w-7xl mx-auto px-4 py-8 w-full">
+                <div class="relative w-full h-[400px] rounded-[3rem] overflow-hidden shadow-2xl">
+                    <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=2069&auto=format&fit=crop" alt="Equipo de trabajo en oficina" class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-1000" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-brand-dark/20 to-transparent"></div>
+                    <div class="absolute bottom-10 left-10 right-10 flex flex-col md:flex-row items-end justify-between">
+                        <div>
+                            <h3 class="text-3xl font-black mb-2 text-neon-lines">Un equipo experto a tu disposición</h3>
+                            <p class="text-gray-300 font-light">Profesionalismo, transparencia y resultados contundentes.</p>
+                        </div>
+                        <button onclick="scrollToServices()" class="mt-4 md:mt-0 px-6 py-3 bg-white text-brand-dark font-bold rounded-full hover:bg-gray-100 transition-colors shadow-[0_0_20px_rgba(255,255,255,0.3)]">
+                            Explorar Servicios
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Testimonial Section -->
+            <section class="max-w-7xl mx-auto px-4 py-24">
+                <div class="text-center mb-16">
+                    <span class="text-brand-fuchsia font-bold tracking-widest uppercase text-sm">Validación Real</span>
+                    <h2 class="text-4xl md:text-5xl font-black text-gray-900 mt-2">La voz de quienes confían</h2>
+                    <p class="text-lg text-gray-500 max-w-2xl mx-auto mt-4">Conoce las historias de éxito de quienes ya delegaron su tranquilidad en nuestras manos.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Testimonio 1 -->
+                    <div class="glass-card rounded-[2rem] p-8 relative flex flex-col h-full group">
+                        <div class="absolute -top-6 -right-2 text-brand-purple/10 group-hover:scale-110 transition-transform duration-300">
+                            <svg width="100" height="100" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M14 11H18.5C18.5 13.4853 16.4853 15.5 14 15.5V18.5C18.1421 18.5 21.5 15.1421 21.5 11V6H14V11ZM3 11H7.5C7.5 13.4853 5.48528 15.5 3 15.5V18.5C7.14214 18.5 10.5 15.1421 10.5 11V6H3V11Z" />
+                            </svg>
+                        </div>
+                        <div class="flex gap-1 mb-6 text-yellow-400 relative z-10">
+                            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        </div>
+                        <p class="text-gray-700 text-lg font-light leading-relaxed mb-8 flex-grow relative z-10">
+                            "Estábamos a punto de perder una gran inversión por un problema con la constructora, pero la intervención del equipo de <strong class="font-bold text-brand-purple">tujusticia.org</strong> fue impecable. Nos devolvieron la tranquilidad, el capital y defendieron nuestros derechos hasta el final."
+                        </p>
+                        <div class="flex items-center gap-4 relative z-10 border-t border-gray-200 pt-6 mt-auto">
+                            <div class="w-14 h-14 rounded-full overflow-hidden border-2 border-brand-fuchsia">
+                                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=200&auto=format&fit=crop" alt="Cliente" class="w-full h-full object-cover" />
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900">María Fernanda López</h4>
+                                <p class="text-sm text-gray-500">Inversionista Inmobiliaria</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonio 2 -->
+                    <div class="glass-card rounded-[2rem] p-8 relative flex flex-col h-full group bg-gradient-to-br from-white to-brand-fuchsia/5 border-brand-purple/20 shadow-xl transform md:-translate-y-4">
+                        <div class="absolute -top-6 -right-2 text-brand-fuchsia/10 group-hover:scale-110 transition-transform duration-300">
+                            <svg width="100" height="100" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M14 11H18.5C18.5 13.4853 16.4853 15.5 14 15.5V18.5C18.1421 18.5 21.5 15.1421 21.5 11V6H14V11ZM3 11H7.5C7.5 13.4853 5.48528 15.5 3 15.5V18.5C7.14214 18.5 10.5 15.1421 10.5 11V6H3V11Z" />
+                            </svg>
+                        </div>
+                        <div class="flex gap-1 mb-6 text-yellow-400 relative z-10">
+                            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        </div>
+                        <p class="text-gray-700 text-lg font-light leading-relaxed mb-8 flex-grow relative z-10">
+                            "El nivel de profesionalismo de <strong class="font-bold text-brand-purple">tujusticia.org</strong> es de otro planeta. No solo administran nuestras propiedades de manera óptima, sino que nos mantienen informados de cada detalle con total transparencia."
+                        </p>
+                        <div class="flex items-center gap-4 relative z-10 border-t border-brand-purple/10 pt-6 mt-auto">
+                            <div class="w-14 h-14 rounded-full overflow-hidden border-2 border-brand-fuchsia">
+                                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=200&auto=format&fit=crop" alt="Cliente" class="w-full h-full object-cover" />
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900">Carlos Restrepo</h4>
+                                <p class="text-sm text-brand-purple font-medium">Propietario y Empresario</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonio 3 -->
+                    <div class="glass-card rounded-[2rem] p-8 relative flex flex-col h-full group">
+                        <div class="absolute -top-6 -right-2 text-brand-purple/10 group-hover:scale-110 transition-transform duration-300">
+                            <svg width="100" height="100" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M14 11H18.5C18.5 13.4853 16.4853 15.5 14 15.5V18.5C18.1421 18.5 21.5 15.1421 21.5 11V6H14V11ZM3 11H7.5C7.5 13.4853 5.48528 15.5 3 15.5V18.5C7.14214 18.5 10.5 15.1421 10.5 11V6H3V11Z" />
+                            </svg>
+                        </div>
+                        <div class="flex gap-1 mb-6 text-yellow-400 relative z-10">
+                            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        </div>
+                        <p class="text-gray-700 text-lg font-light leading-relaxed mb-8 flex-grow relative z-10">
+                            "Delegar la dirección y supervisión de nuestra obra a <strong class="font-bold text-brand-purple">tujusticia.org</strong> fue la mejor decisión. Manejaron todos los permisos y contratistas con una agilidad impresionante."
+                        </p>
+                        <div class="flex items-center gap-4 relative z-10 border-t border-gray-200 pt-6 mt-auto">
+                            <div class="w-14 h-14 rounded-full overflow-hidden border-2 border-brand-fuchsia">
+                                <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=200&auto=format&fit=crop" alt="Cliente" class="w-full h-full object-cover" />
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900">Andrea y Felipe V.</h4>
+                                <p class="text-sm text-gray-500">Desarrolladores de Vivienda</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Final Call to Action -->
+            <section class="max-w-5xl mx-auto px-4 py-16 mb-16 w-full">
+                <div class="bg-gradient-to-br from-brand-dark to-brand-purple rounded-[3rem] p-12 text-center shadow-2xl relative overflow-hidden">
+                    <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+                    <h2 class="relative z-10 text-3xl md:text-4xl font-black mb-6 text-neon-lines">El momento de asegurar tu patrimonio es ahora</h2>
+                    <p class="relative z-10 text-gray-300 mb-8 max-w-2xl mx-auto text-lg">No dejes la rentabilidad de tus proyectos al azar. Delega en expertos y recupera tu tiempo.</p>
+                    <a href="https://wa.me/573144414870?text=Hola%20Jessica%20Lorena.%20Estoy%20interesado%20en%20una%20Asesor%C3%ADa%20y%20Representaci%C3%B3n%20Jur%C3%ADdica%20sobre%20Protecci%C3%B3n%20de%20mi%20Patrimonio.%0A%0APor%20favor%20dame%20m%C3%A1s%20informaci%C3%B3n.%20Vengo%20de%20tujusticia.org" target="_blank" rel="noopener noreferrer" class="relative z-10 px-10 py-4 bg-white text-brand-dark font-black text-lg rounded-full overflow-hidden shadow-[0_0_40px_rgba(255,255,255,0.3)] hover:shadow-[0_0_60px_rgba(255,255,255,0.5)] transition-all transform hover:scale-105 group inline-block">
+                        <span class="group-hover:text-brand-purple transition-colors">Solicitar Análisis Gratuito</span>
+                    </a>
+                </div>
+            </section>
         </div>
-      </section>
+
+
+        <!-- ==================== VISTA 2: ADMINISTRACIÓN DE INMUEBLES (SEGUNDA PARTE) ==================== -->
+        <div id="view-inmuebles" class="view-panel transition-all duration-300 hidden flex-col flex-grow">
+            <!-- Encabezado del Servicio -->
+            <section class="relative pt-24 pb-16 bg-brand-dark rounded-b-[4rem] overflow-hidden shadow-2xl mx-2 md:mx-4 mt-2">
+                <div class="absolute inset-0 z-0 opacity-20">
+                    <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=2073&auto=format&fit=crop" alt="Apartamento moderno" class="w-full h-full object-cover mix-blend-overlay" />
+                </div>
+                <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-brand-fuchsia/30 rounded-full mix-blend-screen filter blur-[100px] animate-pulse"></div>
+
+                <div class="relative z-10 max-w-5xl mx-auto px-6 text-center">
+                    <button onclick="goBack()" class="inline-flex items-center gap-2 px-4 py-2 bg-white/10 text-white hover:bg-white/20 transition-colors rounded-full text-xs font-bold mb-6">
+                        <i data-lucide="arrow-left" class="w-4 h-4"></i> Volver a Servicios
+                    </button>
+                    <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-brand-fuchsia to-brand-purple text-white shadow-[0_0_30px_rgba(217,70,239,0.5)] mb-6 mx-auto">
+                        <i data-lucide="building-2" class="w-8 h-8"></i>
+                    </div>
+                    <h1 class="text-4xl md:text-6xl font-black mb-6 text-neon-lines leading-tight">
+                        Administración Integral de Inmuebles
+                    </h1>
+                    <p class="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto font-light leading-relaxed">
+                        Convierte tus propiedades en <strong class="text-white font-bold">ingresos pasivos reales</strong>. Sin lidiar con inquilinos, sin dolores de cabeza legales, sin perder tu tiempo.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Sección de Contraste (Problema vs Solución) -->
+            <section class="max-w-6xl mx-auto px-4 py-20 w-full">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-black text-gray-900">¿Por qué administrarlo tú mismo es un error?</h2>
+                    <p class="text-gray-500 mt-4 text-lg">Veamos un ejemplo de la vida real.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8 md:gap-12">
+                    <!-- EL PROBLEMA (Dolor) -->
+                    <div class="glass-card rounded-[2rem] p-8 border-t-4 border-t-red-500 relative overflow-hidden cursor-default hover:translate-y-0 hover:shadow-lg hover:border-t-red-500">
+                        <div class="absolute top-4 right-4 text-red-100">
+                            <i data-lucide="frown" class="w-24 h-24 opacity-50"></i>
+                        </div>
+                        <div class="inline-block px-4 py-1 bg-red-100 text-red-700 font-bold rounded-full text-sm mb-6">
+                            El método tradicional (Estrés)
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">El caso de Carlos (El propietario estresado)</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            Carlos compró un apartamento para invertir y lo arrendó por su cuenta. Un domingo a las 3:00 AM recibe una llamada: <em>"Se rompió un tubo y se inundó la sala"</em>.
+                        </p>
+                        <ul class="space-y-4 text-gray-700">
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="x-circle" class="w-6 h-6 text-red-500 flex-shrink-0 mt-0.5"></i>
+                                <span>Carlos tiene que buscar un plomero de urgencia un domingo (muy costoso).</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="x-circle" class="w-6 h-6 text-red-500 flex-shrink-0 mt-0.5"></i>
+                                <span>El inquilino se enoja y decide no pagar el arriendo este mes "por los daños".</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="x-circle" class="w-6 h-6 text-red-500 flex-shrink-0 mt-0.5"></i>
+                                <span>El contrato que Carlos bajó de internet no lo protege legalmente. Carlos pierde dinero y paz mental.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- LA SOLUCIÓN (Alivio) -->
+                    <div class="glass-card rounded-[2rem] p-8 border-t-4 border-t-brand-fuchsia relative overflow-hidden bg-gradient-to-b from-white to-brand-fuchsia/5 shadow-xl md:-translate-y-4 cursor-default hover:shadow-2xl hover:border-t-brand-fuchsia">
+                        <div class="absolute top-4 right-4 text-brand-fuchsia/10">
+                            <i data-lucide="smile" class="w-24 h-24"></i>
+                        </div>
+                        <div class="inline-block px-4 py-1 bg-brand-purple/10 text-brand-purple font-bold rounded-full text-sm mb-6">
+                            El método Tujusticia.org (Tranquilidad)
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">El caso de Laura (La inversionista inteligente)</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            Laura también compró un apartamento, pero nos lo entregó para administrar. Pasa el mismo incidente del tubo un domingo a las 3:00 AM. ¿Qué ocurre?
+                        </p>
+                        <ul class="space-y-4 text-gray-700">
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="check-circle-2" class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5"></i>
+                                <span>El inquilino nos llama a nosotros. Nuestro equipo técnico soluciona el daño inmediatamente usando la póliza de seguro.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="check-circle-2" class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5"></i>
+                                <span>El día 5 del mes, Laura revisa su cuenta bancaria y su arriendo está depositado intacto. Si el inquilino se retrasa, nuestro respaldo financiero le paga a ella de todas formas.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="check-circle-2" class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5"></i>
+                                <span>Laura durmió toda la noche. Su única tarea es disfrutar su rentabilidad.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Detalle de lo que incluye -->
+            <section class="max-w-5xl mx-auto px-4 py-12 w-full">
+                <div class="bg-white rounded-[3rem] shadow-xl p-8 md:p-12 border border-gray-100">
+                    <h2 class="text-3xl font-black text-center mb-10 text-gray-900">¿Qué hacemos exactamente por ti?</h2>
+                    
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-brand-fuchsia/10 flex items-center justify-center flex-shrink-0 text-brand-fuchsia"><i data-lucide="search" class="w-6 h-6"></i></div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-lg">Selección Rigurosa</h4>
+                                <p class="text-gray-600 text-sm mt-1">Evaluamos antecedentes crediticios, jurídicos y referencias para encontrar arrendatarios clase A y codeudores solventes.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-brand-purple/10 flex items-center justify-center flex-shrink-0 text-brand-purple"><i data-lucide="file-signature" class="w-6 h-6"></i></div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-lg">Contratos Blindados</h4>
+                                <p class="text-gray-600 text-sm mt-1">Redactados por nuestro equipo jurídico especializado en bienes raíces, adaptados a la Ley 820 de 2003 sin vacíos legales.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-blue-100 flex items-center justify-center flex-shrink-0 text-blue-600"><i data-lucide="wallet" class="w-6 h-6"></i></div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-lg">Gestión de Cobranza Exacta</h4>
+                                <p class="text-gray-600 text-sm mt-1">Nos encargamos de recaudar, pagar las cuotas de administración y transferirte el dinero sin que tengas que cobrar.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-green-100 flex items-center justify-center flex-shrink-0 text-green-600"><i data-lucide="gavel" class="w-6 h-6"></i></div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-lg">Representación Legal Total</h4>
+                                <p class="text-gray-600 text-sm mt-1">Ante mora o restitución, nuestros abogados inician procesos ejecutivos y de lanzamiento de forma inmediata sin honorarios extra.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA Final -->
+            <section class="max-w-5xl mx-auto px-4 py-16 w-full">
+                <div class="bg-gradient-to-br from-brand-dark to-brand-purple rounded-[3rem] p-12 text-center shadow-[0_20px_50px_rgba(107,33,168,0.3)] relative overflow-hidden">
+                    <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-brand-fuchsia/20 filter blur-[80px]"></div>
+
+                    <h2 class="relative z-10 text-3xl md:text-5xl font-black mb-6 text-neon-lines leading-tight">
+                        Deja que tu propiedad trabaje, <br> mientras tú descansas.
+                    </h2>
+                    <p class="relative z-10 text-gray-300 mb-10 max-w-2xl mx-auto text-lg">
+                        Hablemos hoy sobre cómo podemos proteger tu inversión y garantizar tu rentabilidad.
+                    </p>
+                    <a href="https://wa.me/573144414870?text=Hola%20Jessica%20Lorena.%20Estoy%20interesado%20en%20una%20Asesor%C3%ADa%20y%20Representaci%C3%B3n%20Jur%C3%ADdica%20sobre%20Protecci%C3%B3n%20de%20mi%20Patrimonio.%20Quiero%20saber%20sobre%20la%20Administraci%C3%B3n%20de%20Inmuebles.%0A%0APor%20favor%20dame%20m%C3%A1s%20informaci%C3%B3n.%20Vengo%20de%20tujusticia.org" target="_blank" rel="noopener noreferrer" class="relative z-10 px-10 py-5 bg-white text-brand-dark font-black text-xl rounded-full overflow-hidden shadow-[0_0_40px_rgba(255,255,255,0.3)] hover:shadow-[0_0_60px_rgba(255,255,255,0.6)] transition-all transform hover:scale-105 group inline-flex items-center gap-3">
+                        <i data-lucide="message-circle" class="w-6 h-6 text-[#25D366]"></i>
+                        <span class="group-hover:text-brand-purple transition-colors">Delegar mi inmueble hoy</span>
+                    </a>
+                </div>
+            </section>
+        </div>
+
+
+        <!-- ==================== VISTA 3: DIRECCIÓN DE OBRAS CIVILES (TERCERA PARTE) ==================== -->
+        <div id="view-obras" class="view-panel transition-all duration-300 hidden flex-col flex-grow">
+            <!-- Encabezado del Servicio -->
+            <section class="relative pt-24 pb-16 bg-brand-dark rounded-b-[4rem] overflow-hidden shadow-2xl mx-2 md:mx-4 mt-2">
+                <div class="absolute inset-0 z-0 opacity-20">
+                    <img src="https://images.unsplash.com/photo-1541888081622-15cb3ac3d484?q=80&w=2070&auto=format&fit=crop" alt="Obra de construcción" class="w-full h-full object-cover mix-blend-overlay" />
+                </div>
+                <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-brand-fuchsia/30 rounded-full mix-blend-screen filter blur-[100px] animate-pulse"></div>
+
+                <div class="relative z-10 max-w-5xl mx-auto px-6 text-center">
+                    <button onclick="goBack()" class="inline-flex items-center gap-2 px-4 py-2 bg-white/10 text-white hover:bg-white/20 transition-colors rounded-full text-xs font-bold mb-6">
+                        <i data-lucide="arrow-left" class="w-4 h-4"></i> Volver a Servicios
+                    </button>
+                    <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-brand-fuchsia to-brand-purple text-white shadow-[0_0_30px_rgba(217,70,239,0.5)] mb-6 mx-auto">
+                        <i data-lucide="hard-hat" class="w-8 h-8"></i>
+                    </div>
+                    <h1 class="text-4xl md:text-6xl font-black mb-6 text-neon-lines leading-tight">
+                        Dirección y Supervisión de Obras
+                    </h1>
+                    <p class="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto font-light leading-relaxed">
+                        Control técnico, legal y de presupuestos para tus construcciones. <strong class="text-white font-bold">Garantía total de calidad sin sobrecostos</strong>.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Sección de Contraste (Problema vs Solución) -->
+            <section class="max-w-6xl mx-auto px-4 py-20 w-full">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-black text-gray-900">¿Por qué construir sin supervisión experta es un error?</h2>
+                    <p class="text-gray-500 mt-4 text-lg">Un reflejo de la realidad en la construcción en Colombia.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8 md:gap-12">
+                    <!-- EL PROBLEMA (Dolor) -->
+                    <div class="glass-card rounded-[2rem] p-8 border-t-4 border-t-red-500 relative overflow-hidden cursor-default hover:translate-y-0 hover:shadow-lg hover:border-t-red-500">
+                        <div class="absolute top-4 right-4 text-red-100">
+                            <i data-lucide="frown" class="w-24 h-24 opacity-50"></i>
+                        </div>
+                        <div class="inline-block px-4 py-1 bg-red-100 text-red-700 font-bold rounded-full text-sm mb-6">
+                            El método tradicional (Retrasos y Multas)
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">El caso de Pedro (El constructor sin control)</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            Pedro inició la adecuación de su local comercial contratando directamente a un maestro de obra. A mitad del proceso, todo colapsó.
+                        </p>
+                        <ul class="space-y-4 text-gray-700">
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="x-circle" class="w-6 h-6 text-red-500 flex-shrink-0 mt-0.5"></i>
+                                <span>Los contratistas exigían adelantos constantes, incrementando el presupuesto final en un 45%.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="x-circle" class="w-6 h-6 text-red-500 flex-shrink-0 mt-0.5"></i>
+                                <span>La obra fue suspendida por inspectores municipales debido a la falta de trámites y licencias correctas.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="x-circle" class="w-6 h-6 text-red-500 flex-shrink-0 mt-0.5"></i>
+                                <span>Fisuras por materiales de mala calidad. Pedro asumió los sobrecostos y las demandas de obreros informales.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- LA SOLUCIÓN (Alivio) -->
+                    <div class="glass-card rounded-[2rem] p-8 border-t-4 border-t-brand-fuchsia relative overflow-hidden bg-gradient-to-b from-white to-brand-fuchsia/5 shadow-xl md:-translate-y-4 cursor-default hover:shadow-2xl hover:border-t-brand-fuchsia">
+                        <div class="absolute top-4 right-4 text-brand-fuchsia/10">
+                            <i data-lucide="smile" class="w-24 h-24"></i>
+                        </div>
+                        <div class="inline-block px-4 py-1 bg-brand-purple/10 text-brand-purple font-bold rounded-full text-sm mb-6">
+                            El método Tujusticia.org (Seguridad y Ahorro)
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">El caso de Sofía (La empresaria blindada)</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            Sofía contrató la supervisión técnica y legal de Tujusticia.org para construir su complejo de oficinas. El proceso fue impecable.
+                        </p>
+                        <ul class="space-y-4 text-gray-700">
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="check-circle-2" class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5"></i>
+                                <span>Ejecutamos un control semanal de insumos y mano de obra. La construcción finalizó en el presupuesto pactado.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="check-circle-2" class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5"></i>
+                                <span>Todos los trámites ante curaduría y licencias ambientales fueron radicados y aprobados con anterioridad.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="check-circle-2" class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5"></i>
+                                <span>Contratos de obra blindados con pólizas de cumplimiento, estabilidad de la obra e incidentes laborales.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Detalle de lo que incluye -->
+            <section class="max-w-5xl mx-auto px-4 py-12 w-full">
+                <div class="bg-white rounded-[3rem] shadow-xl p-8 md:p-12 border border-gray-100">
+                    <h2 class="text-3xl font-black text-center mb-10 text-gray-900">Nuestra Intervención Estratégica</h2>
+                    
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-brand-fuchsia/10 flex items-center justify-center flex-shrink-0 text-brand-fuchsia"><i data-lucide="check-square" class="w-6 h-6"></i></div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-lg">Supervisión e Interventoría</h4>
+                                <p class="text-gray-600 text-sm mt-1">Verificación continua del proceso estructural e ingenieril bajo la norma NSR-10 colombiana.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-brand-purple/10 flex items-center justify-center flex-shrink-0 text-brand-purple"><i data-lucide="shield-alert" class="w-6 h-6"></i></div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-lg">Blindaje Legal Laboral</h4>
+                                <p class="text-gray-600 text-sm mt-1">Gestión contractual y de seguridad social de todos los obreros para evitar demandas directas al propietario.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-blue-100 flex items-center justify-center flex-shrink-0 text-blue-600"><i data-lucide="trending-down" class="w-6 h-6"></i></div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-lg">Auditoría de Costos</h4>
+                                <p class="text-gray-600 text-sm mt-1">Análisis riguroso de cotizaciones y compras de materiales para asegurar un ahorro técnico comprobado.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-green-100 flex items-center justify-center flex-shrink-0 text-green-600"><i data-lucide="file-text" class="w-6 h-6"></i></div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-lg">Tramitología Completa</h4>
+                                <p class="text-gray-600 text-sm mt-1">Licenciamiento ágil de construcción, resoluciones ante curadurías urbanas y gestiones ante entes municipales.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA Final -->
+            <section class="max-w-5xl mx-auto px-4 py-16 w-full">
+                <div class="bg-gradient-to-br from-brand-dark to-brand-purple rounded-[3rem] p-12 text-center shadow-[0_20px_50px_rgba(107,33,168,0.3)] relative overflow-hidden">
+                    <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-brand-fuchsia/20 filter blur-[80px]"></div>
+
+                    <h2 class="relative z-10 text-3xl md:text-5xl font-black mb-6 text-neon-lines leading-tight">
+                        Construye seguro. Protege tu capital.
+                    </h2>
+                    <p class="relative z-10 text-gray-300 mb-10 max-w-2xl mx-auto text-lg">
+                        Hablemos sobre cómo podemos asegurar la calidad de tu proyecto de obra civil.
+                    </p>
+                    <a href="https://wa.me/573144414870?text=Hola%20Jessica%20Lorena.%20Estoy%20interesado%20en%20una%20Asesor%C3%ADa%20y%20Representaci%C3%B3n%20Jur%C3%ADdica%20sobre%20Protecci%C3%B3n%20de%20mi%20Patrimonio.%20Quiero%20saber%20sobre%20la%20Direcci%C3%B3n%20y%20Supervisi%C3%B3n%20de%20Obras%20Civiles.%0A%0APor%20favor%20dame%20m%C3%A1s%20informaci%C3%B3n.%20Vengo%20de%20tujusticia.org" target="_blank" rel="noopener noreferrer" class="relative z-10 px-10 py-5 bg-white text-brand-dark font-black text-xl rounded-full overflow-hidden shadow-[0_0_40px_rgba(255,255,255,0.3)] hover:shadow-[0_0_60px_rgba(255,255,255,0.6)] transition-all transform hover:scale-105 group inline-flex items-center gap-3">
+                        <i data-lucide="message-circle" class="w-6 h-6 text-[#25D366]"></i>
+                        <span class="group-hover:text-brand-purple transition-colors">Supervisar mi obra hoy</span>
+                    </a>
+                </div>
+            </section>
+        </div>
+
+
+        <!-- ==================== VISTAS ADICIONALES PARA OTROS SERVICIOS ==================== -->
+        <!-- VISTA 4: GESTIÓN DE PROYECTOS DE VIVIENDA -->
+        <div id="view-vivienda" class="view-panel transition-all duration-300 hidden flex-col flex-grow">
+            <!-- Encabezado del Servicio -->
+            <section class="relative pt-24 pb-16 bg-brand-dark rounded-b-[4rem] overflow-hidden shadow-2xl mx-2 md:mx-4 mt-2">
+                <div class="absolute inset-0 z-0 opacity-20">
+                    <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=2073&auto=format&fit=crop" alt="Vivienda moderna" class="w-full h-full object-cover mix-blend-overlay" />
+                </div>
+                <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-brand-fuchsia/30 rounded-full mix-blend-screen filter blur-[100px] animate-pulse"></div>
+
+                <div class="relative z-10 max-w-5xl mx-auto px-6 text-center">
+                    <button onclick="goBack()" class="inline-flex items-center gap-2 px-4 py-2 bg-white/10 text-white hover:bg-white/20 transition-colors rounded-full text-xs font-bold mb-6">
+                        <i data-lucide="arrow-left" class="w-4 h-4"></i> Volver a Servicios
+                    </button>
+                    <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-brand-fuchsia to-brand-purple text-white shadow-[0_0_30px_rgba(217,70,239,0.5)] mb-6 mx-auto">
+                        <i data-lucide="home" class="w-8 h-8"></i>
+                    </div>
+                    <h1 class="text-4xl md:text-6xl font-black mb-6 text-neon-lines leading-tight">
+                        Gestión de Proyectos de Vivienda
+                    </h1>
+                    <p class="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto font-light leading-relaxed">
+                        Desarrollo integral de proyectos inmobiliarios. Estructuración legal, fiduciaria y comercial.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Sección de Contraste (Problema vs Solución) -->
+            <section class="max-w-6xl mx-auto px-4 py-20 w-full">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-black text-gray-900">¿Por qué estructurar sin asesoría es perder tu capital?</h2>
+                    <p class="text-gray-500 mt-4 text-lg">Riesgos comunes de desarrollos habitacionales.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8 md:gap-12">
+                    <!-- EL PROBLEMA (Dolor) -->
+                    <div class="glass-card rounded-[2rem] p-8 border-t-4 border-t-red-500 relative overflow-hidden cursor-default hover:translate-y-0 hover:shadow-lg hover:border-t-red-500">
+                        <div class="absolute top-4 right-4 text-red-100">
+                            <i data-lucide="frown" class="w-24 h-24 opacity-50"></i>
+                        </div>
+                        <div class="inline-block px-4 py-1 bg-red-100 text-red-700 font-bold rounded-full text-sm mb-6">
+                            El método tradicional (Proyecto estancado)
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">El caso de Manuel (El comprador frustrado)</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            Manuel compró en planos un apartamento para su familia. Tres años después, el edificio seguía a mitad de camino y la constructora se declaró insolvente.
+                        </p>
+                        <ul class="space-y-4 text-gray-700">
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="x-circle" class="w-6 h-6 text-red-500 flex-shrink-0 mt-0.5"></i>
+                                <span>La fiduciaria no tenía pólizas claras sobre el capital de los compradores.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="x-circle" class="w-6 h-6 text-red-500 flex-shrink-0 mt-0.5"></i>
+                                <span>Incumplimientos normativos impidieron la entrega de escrituras y servicios públicos.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="x-circle" class="w-6 h-6 text-red-500 flex-shrink-0 mt-0.5"></i>
+                                <span>Manuel inició demandas que tardarán años en resolverse. Perdió sus ahorros.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- LA SOLUCIÓN (Alivio) -->
+                    <div class="glass-card rounded-[2rem] p-8 border-t-4 border-t-brand-fuchsia relative overflow-hidden bg-gradient-to-b from-white to-brand-fuchsia/5 shadow-xl md:-translate-y-4 cursor-default hover:shadow-2xl hover:border-t-brand-fuchsia">
+                        <div class="absolute top-4 right-4 text-brand-fuchsia/10">
+                            <i data-lucide="smile" class="w-24 h-24"></i>
+                        </div>
+                        <div class="inline-block px-4 py-1 bg-brand-purple/10 text-brand-purple font-bold rounded-full text-sm mb-6">
+                            El método Tujusticia.org (Seguridad total)
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">El caso de Camilo (El inversionista seguro)</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            Camilo invirtió en un proyecto de vivienda estructurado legal y administrativamente por Tujusticia.org. Su patrimonio está 100% blindado.
+                        </p>
+                        <ul class="space-y-4 text-gray-700">
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="check-circle-2" class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5"></i>
+                                <span>Administración transparente con encargo fiduciario y cumplimiento de punto de equilibrio antes de construir.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="check-circle-2" class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5"></i>
+                                <span>Saneamiento previo de títulos y escrituración de áreas comunes sin contingencias registrales.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="check-circle-2" class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5"></i>
+                                <span>Entrega física jurídica con póliza decenal de estabilidad estructural obligatoria.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA Final -->
+            <section class="max-w-5xl mx-auto px-4 py-16 w-full">
+                <div class="bg-gradient-to-br from-brand-dark to-brand-purple rounded-[3rem] p-12 text-center shadow-[0_20px_50px_rgba(107,33,168,0.3)] relative overflow-hidden">
+                    <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-brand-fuchsia/20 filter blur-[80px]"></div>
+
+                    <h2 class="relative z-10 text-3xl md:text-5xl font-black mb-6 text-neon-lines leading-tight">
+                        Estructuración y éxito inmobiliario.
+                    </h2>
+                    <p class="relative z-10 text-gray-300 mb-10 max-w-2xl mx-auto text-lg">
+                        Garantizamos que tu proyecto inmobiliario cumpla con la normatividad colombiana y sea rentable.
+                    </p>
+                    <a href="https://wa.me/573144414870?text=Hola%20Jessica%20Lorena.%20Estoy%20interesado%20en%20una%20Asesor%C3%ADa%20y%20Representaci%C3%B3n%20Jur%C3%ADdica%20sobre%20Protecci%C3%B3n%20de%20mi%20Patrimonio.%20Quiero%20saber%20sobre%20la%20Gesti%C3%B3n%20de%20Proyectos%20de%20Vivienda." target="_blank" rel="noopener noreferrer" class="relative z-10 px-10 py-5 bg-white text-brand-dark font-black text-xl rounded-full overflow-hidden shadow-[0_0_40px_rgba(255,255,255,0.3)] hover:shadow-[0_0_60px_rgba(255,255,255,0.6)] transition-all transform hover:scale-105 group inline-flex items-center gap-3">
+                        <i data-lucide="message-circle" class="w-6 h-6 text-[#25D366]"></i>
+                        <span class="group-hover:text-brand-purple transition-colors">Estructurar mi proyecto hoy</span>
+                    </a>
+                </div>
+            </section>
+        </div>
+
+        <!-- VISTA 5: REPRESENTACIÓN LEGAL EN PROPIEDAD -->
+        <div id="view-representacion" class="view-panel transition-all duration-300 hidden flex-col flex-grow">
+            <!-- Encabezado del Servicio -->
+            <section class="relative pt-24 pb-16 bg-brand-dark rounded-b-[4rem] overflow-hidden shadow-2xl mx-2 md:mx-4 mt-2">
+                <div class="absolute inset-0 z-0 opacity-20">
+                    <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=2069&auto=format&fit=crop" alt="Mesa de reunión con leyes" class="w-full h-full object-cover mix-blend-overlay" />
+                </div>
+                <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-brand-fuchsia/30 rounded-full mix-blend-screen filter blur-[100px] animate-pulse"></div>
+
+                <div class="relative z-10 max-w-5xl mx-auto px-6 text-center">
+                    <button onclick="goBack()" class="inline-flex items-center gap-2 px-4 py-2 bg-white/10 text-white hover:bg-white/20 transition-colors rounded-full text-xs font-bold mb-6">
+                        <i data-lucide="arrow-left" class="w-4 h-4"></i> Volver a Servicios
+                    </button>
+                    <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-brand-fuchsia to-brand-purple text-white shadow-[0_0_30px_rgba(217,70,239,0.5)] mb-6 mx-auto">
+                        <i data-lucide="scale" class="w-8 h-8"></i>
+                    </div>
+                    <h1 class="text-4xl md:text-6xl font-black mb-6 text-neon-lines leading-tight">
+                        Representación Legal en Propiedad
+                    </h1>
+                    <p class="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto font-light leading-relaxed">
+                        Defensa implacable de tu patrimonio inmobiliario. Litigios, deslindes, propiedad horizontal y contratos de compraventa.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Sección de Contraste (Problema vs Solución) -->
+            <section class="max-w-6xl mx-auto px-4 py-20 w-full">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-black text-gray-900">¿Por qué arriesgar tu inmueble sin defensa especializada?</h2>
+                    <p class="text-gray-500 mt-4 text-lg">Litigios de linderos y disputas posesorias.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8 md:gap-12">
+                    <!-- EL PROBLEMA (Dolor) -->
+                    <div class="glass-card rounded-[2rem] p-8 border-t-4 border-t-red-500 relative overflow-hidden cursor-default hover:translate-y-0 hover:shadow-lg hover:border-t-red-500">
+                        <div class="absolute top-4 right-4 text-red-100">
+                            <i data-lucide="frown" class="w-24 h-24 opacity-50"></i>
+                        </div>
+                        <div class="inline-block px-4 py-1 bg-red-100 text-red-700 font-bold rounded-full text-sm mb-6">
+                            El método tradicional (Invasión de predio)
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">El caso de Helena (La propiedad desprotegida)</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            Helena tenía un terreno suburbano desocupado. Al regresar, encontró que un vecino corrió la cerca e inició construcciones informales, reclamando "posesión".
+                        </p>
+                        <ul class="space-y-4 text-gray-700">
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="x-circle" class="w-6 h-6 text-red-500 flex-shrink-0 mt-0.5"></i>
+                                <span>No inició acciones posesorias inmediatas por desconocer los términos legales (caducidad).</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="x-circle" class="w-6 h-6 text-red-500 flex-shrink-0 mt-0.5"></i>
+                                <span>Disputas verbales infructuosas que generaron riesgos de seguridad personal.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="x-circle" class="w-6 h-6 text-red-500 flex-shrink-0 mt-0.5"></i>
+                                <span>El terreno ahora enfrenta un proceso judicial complejo que devaluará su precio por años.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- LA SOLUCIÓN (Alivio) -->
+                    <div class="glass-card rounded-[2rem] p-8 border-t-4 border-t-brand-fuchsia relative overflow-hidden bg-gradient-to-b from-white to-brand-fuchsia/5 shadow-xl md:-translate-y-4 cursor-default hover:shadow-2xl hover:border-t-brand-fuchsia">
+                        <div class="absolute top-4 right-4 text-brand-fuchsia/10">
+                            <i data-lucide="smile" class="w-24 h-24"></i>
+                        </div>
+                        <div class="inline-block px-4 py-1 bg-brand-purple/10 text-brand-purple font-bold rounded-full text-sm mb-6">
+                            El método Tujusticia.org (Defensa inmediata)
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">El caso de Carlos (El terreno blindado)</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            Carlos enfrentó un intento similar de invasión en su lote. Nos contactó de inmediato y activamos un plan de defensa judicial.
+                        </p>
+                        <ul class="space-y-4 text-gray-700">
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="check-circle-2" class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5"></i>
+                                <span>Radicamos una Querella Policiva por Perturbación a la Posesión en menos de 48 horas.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="check-circle-2" class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5"></i>
+                                <span>Inspección ocular oficial restituyó físicamente los linderos originales con la policía.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="check-circle-2" class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5"></i>
+                                <span>Carlos protegió el valor de su tierra de forma legal, pacífica y contundente.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA Final -->
+            <section class="max-w-5xl mx-auto px-4 py-16 w-full">
+                <div class="bg-gradient-to-br from-brand-dark to-brand-purple rounded-[3rem] p-12 text-center shadow-[0_20px_50px_rgba(107,33,168,0.3)] relative overflow-hidden">
+                    <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-brand-fuchsia/20 filter blur-[80px]"></div>
+
+                    <h2 class="relative z-10 text-3xl md:text-5xl font-black mb-6 text-neon-lines leading-tight">
+                        Defendemos tus derechos de propiedad.
+                    </h2>
+                    <p class="relative z-10 text-gray-300 mb-10 max-w-2xl mx-auto text-lg">
+                        Representación legal robusta en litigios posesorios, propiedad horizontal e incumplimientos inmobiliarios.
+                    </p>
+                    <a href="https://wa.me/573144414870?text=Hola%20Jessica%20Lorena.%20Estoy%20interesado%20en%20una%20Asesor%C3%ADa%20y%20Representaci%C3%B3n%20Jur%C3%ADdica%20sobre%20Protecci%C3%B3n%20de%20mi%20Patrimonio.%20Quiero%20saber%20sobre%20la%20Representaci%C3%B3n%20Legal%20en%20Propiedad." target="_blank" rel="noopener noreferrer" class="relative z-10 px-10 py-5 bg-white text-brand-dark font-black text-xl rounded-full overflow-hidden shadow-[0_0_40px_rgba(255,255,255,0.3)] hover:shadow-[0_0_60px_rgba(255,255,255,0.6)] transition-all transform hover:scale-105 group inline-flex items-center gap-3">
+                        <i data-lucide="message-circle" class="w-6 h-6 text-[#25D366]"></i>
+                        <span class="group-hover:text-brand-purple transition-colors">Defender mi propiedad hoy</span>
+                    </a>
+                </div>
+            </section>
+        </div>
+
+        <!-- VISTA 6: ADMIN DE NEGOCIOS E INVERSIONES -->
+        <div id="view-negocios" class="view-panel transition-all duration-300 hidden flex-col flex-grow">
+            <!-- Encabezado del Servicio -->
+            <section class="relative pt-24 pb-16 bg-brand-dark rounded-b-[4rem] overflow-hidden shadow-2xl mx-2 md:mx-4 mt-2">
+                <div class="absolute inset-0 z-0 opacity-20">
+                    <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=2073&auto=format&fit=crop" alt="Gráfica financiera en oficina" class="w-full h-full object-cover mix-blend-overlay" />
+                </div>
+                <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-brand-fuchsia/30 rounded-full mix-blend-screen filter blur-[100px] animate-pulse"></div>
+
+                <div class="relative z-10 max-w-5xl mx-auto px-6 text-center">
+                    <button onclick="goBack()" class="inline-flex items-center gap-2 px-4 py-2 bg-white/10 text-white hover:bg-white/20 transition-colors rounded-full text-xs font-bold mb-6">
+                        <i data-lucide="arrow-left" class="w-4 h-4"></i> Volver a Servicios
+                    </button>
+                    <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-brand-fuchsia to-brand-purple text-white shadow-[0_0_30px_rgba(217,70,239,0.5)] mb-6 mx-auto">
+                        <i data-lucide="trending-up" class="w-8 h-8"></i>
+                    </div>
+                    <h1 class="text-4xl md:text-6xl font-black mb-6 text-neon-lines leading-tight">
+                        Admin. de Negocios e Inversiones
+                    </h1>
+                    <p class="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto font-light leading-relaxed">
+                        Multiplicamos tu capital en proyectos inmobiliarios garantizados. Asesoría de inversión pasiva premium.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Sección de Contraste (Problema vs Solución) -->
+            <section class="max-w-6xl mx-auto px-4 py-20 w-full">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-black text-gray-900">¿Por qué administrar tu capital al azar es un error?</h2>
+                    <p class="text-gray-500 mt-4 text-lg">Optimización tributaria e inmobiliaria.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8 md:gap-12">
+                    <!-- EL PROBLEMA (Dolor) -->
+                    <div class="glass-card rounded-[2rem] p-8 border-t-4 border-t-red-500 relative overflow-hidden cursor-default hover:translate-y-0 hover:shadow-lg hover:border-t-red-500">
+                        <div class="absolute top-4 right-4 text-red-100">
+                            <i data-lucide="frown" class="w-24 h-24 opacity-50"></i>
+                        </div>
+                        <div class="inline-block px-4 py-1 bg-red-100 text-red-700 font-bold rounded-full text-sm mb-6">
+                            El método tradicional (Inversiones abrumadoras)
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">El caso de Diego (El inversionista cansado)</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            Diego compró locales comerciales para vivir de las rentas. Pero lidiar con reparaciones, pagos tardíos de empresas y cobro de IVA devoró su tiempo libre.
+                        </p>
+                        <ul class="space-y-4 text-gray-700">
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="x-circle" class="w-6 h-6 text-red-500 flex-shrink-0 mt-0.5"></i>
+                                <span>Problemas tributarios por mala facturación de arriendos comerciales.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="x-circle" class="w-6 h-6 text-red-500 flex-shrink-0 mt-0.5"></i>
+                                <span>Locales vacíos durante meses por no tener estrategias ágiles de corretaje comercial.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="x-circle" class="w-6 h-6 text-red-500 flex-shrink-0 mt-0.5"></i>
+                                <span>Rentabilidad real inferior a la inflación por falta de optimización operativa.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- LA SOLUCIÓN (Alivio) -->
+                    <div class="glass-card rounded-[2rem] p-8 border-t-4 border-t-brand-fuchsia relative overflow-hidden bg-gradient-to-b from-white to-brand-fuchsia/5 shadow-xl md:-translate-y-4 cursor-default hover:shadow-2xl hover:border-t-brand-fuchsia">
+                        <div class="absolute top-4 right-4 text-brand-fuchsia/10">
+                            <i data-lucide="smile" class="w-24 h-24"></i>
+                        </div>
+                        <div class="inline-block px-4 py-1 bg-brand-purple/10 text-brand-purple font-bold rounded-full text-sm mb-6">
+                            El método Tujusticia.org (Rentabilidad pasiva)
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">El caso de Marta (La inversionista libre)</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            Marta entregó su capital comercial a nuestro portafolio de administración. Recibe reportes contables mensuales y dividendos exactos.
+                        </p>
+                        <ul class="space-y-4 text-gray-700">
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="check-circle-2" class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5"></i>
+                                <span>Facturación electrónica de arriendos, retenciones y control tributario total.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="check-circle-2" class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5"></i>
+                                <span>Ocupación de locales garantizada superior al 95% mediante alianzas corporativas.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="check-circle-2" class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5"></i>
+                                <span>Optimización operativa que elevó su retorno de inversión (ROI) neto en un 18%.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA Final -->
+            <section class="max-w-5xl mx-auto px-4 py-16 w-full">
+                <div class="bg-gradient-to-br from-brand-dark to-brand-purple rounded-[3rem] p-12 text-center shadow-[0_20px_50px_rgba(107,33,168,0.3)] relative overflow-hidden">
+                    <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-brand-fuchsia/20 filter blur-[80px]"></div>
+
+                    <h2 class="relative z-10 text-3xl md:text-5xl font-black mb-6 text-neon-lines leading-tight">
+                        Maximiza tu rentabilidad inmobiliaria.
+                    </h2>
+                    <p class="relative z-10 text-gray-300 mb-10 max-w-2xl mx-auto text-lg">
+                        Operamos tu portafolio comercial, reduciendo contingencias legales e impositivas.
+                    </p>
+                    <a href="https://wa.me/573144414870?text=Hola%20Jessica%20Lorena.%20Estoy%20interesado%20en%20una%20Asesor%C3%ADa%20y%20Representaci%C3%B3n%20Jur%C3%ADdica%20sobre%20Protecci%C3%B3n%20de%20mi%20Patrimonio.%20Quiero%20saber%20sobre%20la%20Administraci%C3%B3n%20de%20Negocios%20e%20Inversiones." target="_blank" rel="noopener noreferrer" class="relative z-10 px-10 py-5 bg-white text-brand-dark font-black text-xl rounded-full overflow-hidden shadow-[0_0_40px_rgba(255,255,255,0.3)] hover:shadow-[0_0_60px_rgba(255,255,255,0.6)] transition-all transform hover:scale-105 group inline-flex items-center gap-3">
+                        <i data-lucide="message-circle" class="w-6 h-6 text-[#25D366]"></i>
+                        <span class="group-hover:text-brand-purple transition-colors">Administrar mi inversión hoy</span>
+                    </a>
+                </div>
+            </section>
+        </div>
+
+        <!-- VISTA 7: GESTIÓN INTEGRAL 360° -->
+        <div id="view-gestion360" class="view-panel transition-all duration-300 hidden flex-col flex-grow">
+            <!-- Encabezado del Servicio -->
+            <section class="relative pt-24 pb-16 bg-brand-dark rounded-b-[4rem] overflow-hidden shadow-2xl mx-2 md:mx-4 mt-2">
+                <div class="absolute inset-0 z-0 opacity-20">
+                    <img src="https://images.unsplash.com/photo-1541888081622-15cb3ac3d484?q=80&w=2070&auto=format&fit=crop" alt="Edificio moderno en construcción" class="w-full h-full object-cover mix-blend-overlay" />
+                </div>
+                <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-brand-fuchsia/30 rounded-full mix-blend-screen filter blur-[100px] animate-pulse"></div>
+
+                <div class="relative z-10 max-w-5xl mx-auto px-6 text-center">
+                    <button onclick="goBack()" class="inline-flex items-center gap-2 px-4 py-2 bg-white/10 text-white hover:bg-white/20 transition-colors rounded-full text-xs font-bold mb-6">
+                        <i data-lucide="arrow-left" class="w-4 h-4"></i> Volver a Servicios
+                    </button>
+                    <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-brand-fuchsia to-brand-purple text-white shadow-[0_0_30px_rgba(217,70,239,0.5)] mb-6 mx-auto">
+                        <i data-lucide="gem" class="w-8 h-8"></i>
+                    </div>
+                    <h1 class="text-4xl md:text-6xl font-black mb-6 text-neon-lines leading-tight">
+                        Gestión Integral 360°
+                    </h1>
+                    <p class="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto font-light leading-relaxed">
+                        Acompañamiento absoluto de extremo a extremo. Compra, estructuración, edificación, entrega y saneamiento legal de activos.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Sección de Contraste (Problema vs Solución) -->
+            <section class="max-w-6xl mx-auto px-4 py-20 w-full">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-black text-gray-900">¿Por qué arriesgar el 100% de tu capital sin control total?</h2>
+                    <p class="text-gray-500 mt-4 text-lg">Soluciones llave en mano de alto perfil.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8 md:gap-12">
+                    <!-- EL PROBLEMA (Dolor) -->
+                    <div class="glass-card rounded-[2rem] p-8 border-t-4 border-t-red-500 relative overflow-hidden cursor-default hover:translate-y-0 hover:shadow-lg hover:border-t-red-500">
+                        <div class="absolute top-4 right-4 text-red-100">
+                            <i data-lucide="frown" class="w-24 h-24 opacity-50"></i>
+                        </div>
+                        <div class="inline-block px-4 py-1 bg-red-100 text-red-700 font-bold rounded-full text-sm mb-6">
+                            El método tradicional (Falta de control)
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">El caso de Roberto (El desarrollador desbordado)</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            Roberto quiso desarrollar un edificio multifamiliar. Tuvo que contratar por separado ingenieros, abogados de tierras, corredores y fiducias, perdiendo el control y la coordinación.
+                        </p>
+                        <ul class="space-y-4 text-gray-700">
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="x-circle" class="w-6 h-6 text-red-500 flex-shrink-0 mt-0.5"></i>
+                                <span>Conflictos entre los ingenieros y los abogados por retrasos regulatorios.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="x-circle" class="w-6 h-6 text-red-500 flex-shrink-0 mt-0.5"></i>
+                                <span>Sobrecostos enormes por no coordinar los presupuestos de compras con las etapas técnicas.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="x-circle" class="w-6 h-6 text-red-500 flex-shrink-0 mt-0.5"></i>
+                                <span>Entregas demoradas y demandas por vicios ocultos de construcción.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- LA SOLUCIÓN (Alivio) -->
+                    <div class="glass-card rounded-[2rem] p-8 border-t-4 border-t-brand-fuchsia relative overflow-hidden bg-gradient-to-b from-white to-brand-fuchsia/5 shadow-xl md:-translate-y-4 cursor-default hover:shadow-2xl hover:border-t-brand-fuchsia">
+                        <div class="absolute top-4 right-4 text-brand-fuchsia/10">
+                            <i data-lucide="smile" class="w-24 h-24"></i>
+                        </div>
+                        <div class="inline-block px-4 py-1 bg-brand-purple/10 text-brand-purple font-bold rounded-full text-sm mb-6">
+                            El método Tujusticia.org (Dirección unificada)
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">El caso de Liliana (La socia estratégica)</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            Liliana contrató la solución de Gestión Integral 360° de Tujusticia.org. Un solo equipo de ingenieros y abogados lideró su obra con éxito.
+                        </p>
+                        <ul class="space-y-4 text-gray-700">
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="check-circle-2" class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5"></i>
+                                <span>Sincronización técnica legal desde el estudio del terreno hasta las ventas.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="check-circle-2" class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5"></i>
+                                <span>Presupuesto y cronograma controlados mediante interventoría integrada y compras unificadas.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="check-circle-2" class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5"></i>
+                                <span>Entrega llave en mano de los apartamentos saneados y escriturados a satisfacción del comprador.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA Final -->
+            <section class="max-w-5xl mx-auto px-4 py-16 w-full">
+                <div class="bg-gradient-to-br from-brand-dark to-brand-purple rounded-[3rem] p-12 text-center shadow-[0_20px_50px_rgba(107,33,168,0.3)] relative overflow-hidden">
+                    <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-brand-fuchsia/20 filter blur-[80px]"></div>
+
+                    <h2 class="relative z-10 text-3xl md:text-5xl font-black mb-6 text-neon-lines leading-tight">
+                        Gestión absoluta llave en mano.
+                    </h2>
+                    <p class="relative z-10 text-gray-300 mb-10 max-w-2xl mx-auto text-lg">
+                        Protegemos tus inversiones y coordinamos todas las aristas de tus proyectos inmobiliarios de alto valor.
+                    </p>
+                    <a href="https://wa.me/573144414870?text=Hola%20Jessica%20Lorena.%20Estoy%20interesado%20en%20una%20Asesor%C3%ADa%20y%20Representaci%C3%B3n%20Jur%C3%ADdica%20sobre%20Protecci%C3%B3n%20de%20mi%20Patrimonio.%20Quiero%20saber%20sobre%20la%20Gesti%C3%B3n%20Integral%20360." target="_blank" rel="noopener noreferrer" class="relative z-10 px-10 py-5 bg-white text-brand-dark font-black text-xl rounded-full overflow-hidden shadow-[0_0_40px_rgba(255,255,255,0.3)] hover:shadow-[0_0_60px_rgba(255,255,255,0.6)] transition-all transform hover:scale-105 group inline-flex items-center gap-3">
+                        <i data-lucide="message-circle" class="w-6 h-6 text-[#25D366]"></i>
+                        <span class="group-hover:text-brand-purple transition-colors">Solicitar gestión unificada</span>
+                    </a>
+                </div>
+            </section>
+        </div>
+
     </main>
 
-    <!-- FOOTER -->
-    <footer class="footer">
-      <div class="footer-logo-container">
-        <img src="assets/logo_triangular.png" alt="Logo Triangular" class="footer-logo">
-      </div>
-      <p class="footer-text">
-        Consorcio Jurídico Legal enfocado en brindar asesoría y representación de excelencia en Colombia.
-        <br>
-        <strong>NIT. 901.487.297-9</strong>
-      </p>
-      <div class="footer-socials">
-        <a href="#" class="social-icon">FB</a>
-        <a href="#" class="social-icon">TW</a>
-        <a href="#" class="social-icon">LN</a>
-        <a href="#" class="social-icon">WA</a>
-      </div>
-      <div class="footer-copy">
-        &copy; 2026 TU JUSTICIA. Todos los derechos reservados.
-      </div>
+    <!-- FOOTER GENERAL UNIFICADO -->
+    <footer class="bg-brand-dark text-white py-12 px-6 border-t border-brand-gold/10">
+        <div class="max-w-6xl mx-auto flex flex-col items-center text-center">
+            <div class="w-[160px] mb-6">
+                <img src="assets/logo_triangular.png" alt="Logo Triangular" class="w-full h-auto object-contain">
+            </div>
+            <p class="text-gray-400 text-sm max-w-lg mb-8 leading-relaxed">
+                Consorcio Jurídico Legal enfocado en brindar asesoría y representación de excelencia en Colombia. Protegiendo tu patrimonio con rigurosidad legal y técnica.
+                <br>
+                <strong class="text-brand-gold font-bold">NIT. 901.487.297-9</strong>
+            </p>
+            <div class="flex items-center gap-6 mb-8">
+                <a href="#" class="w-10 h-10 rounded-full bg-white/5 border border-brand-gold/20 flex items-center justify-center text-brand-gold hover:bg-brand-gold hover:text-brand-dark transition-colors font-bold text-xs">FB</a>
+                <a href="#" class="w-10 h-10 rounded-full bg-white/5 border border-brand-gold/20 flex items-center justify-center text-brand-gold hover:bg-brand-gold hover:text-brand-dark transition-colors font-bold text-xs">TW</a>
+                <a href="#" class="w-10 h-10 rounded-full bg-white/5 border border-brand-gold/20 flex items-center justify-center text-brand-gold hover:bg-brand-gold hover:text-brand-dark transition-colors font-bold text-xs">LN</a>
+                <a href="https://wa.me/573144414870" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/5 border border-brand-gold/20 flex items-center justify-center text-brand-gold hover:bg-brand-gold hover:text-brand-dark transition-colors font-bold text-xs">WA</a>
+            </div>
+            <div class="text-xs text-gray-500">
+                &copy; 2026 TU JUSTICIA. Todos los derechos reservados.
+            </div>
+        </div>
     </footer>
-  </div>
 
-  <script src="js/main.js"></script>
+    <!-- LOGIC SCRIPTS -->
+    <script>
+        // Inicializar Iconos de Lucide
+        lucide.createIcons();
+
+        // Control del Menú Hamburguesa y Sidebar
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('sidebar-overlay');
+
+        function toggleSidebar() {
+            hamburgerBtn.classList.toggle('hamburger-active');
+            sidebar.classList.toggle('-translate-x-full');
+            overlay.classList.toggle('hidden');
+        }
+
+        hamburgerBtn.addEventListener('click', toggleSidebar);
+        overlay.addEventListener('click', toggleSidebar);
+
+        // Desplazamiento suave al grid de servicios
+        function scrollToServices() {
+            const grid = document.getElementById('services-grid');
+            if (grid) {
+                grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        // Control de Cambios de Vista
+        function switchView(viewId) {
+            // Ocultar todos los paneles
+            document.querySelectorAll('.view-panel').forEach(panel => {
+                panel.classList.add('hidden');
+            });
+            // Mostrar el panel seleccionado
+            const activePanel = document.getElementById(viewId);
+            if (activePanel) {
+                activePanel.classList.remove('hidden');
+                // Hacer scroll automático al inicio
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        function goBack() {
+            switchView('view-main');
+        }
+
+        // Neuromarketing: Alertas dinámicas al cambiar de pestaña
+        let originalTitle = document.title;
+        let activeInterval = null;
+
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) {
+                activeInterval = setInterval(() => {
+                    document.title = document.title === "💬 Mensaje sin leer" ? "⚠️ Tu consulta está pendiente" : "💬 Mensaje sin leer";
+                }, 2000);
+            } else {
+                clearInterval(activeInterval);
+                document.title = originalTitle;
+            }
+        });
+    </script>
 </body>
 </html>
