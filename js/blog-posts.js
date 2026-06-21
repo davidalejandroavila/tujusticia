@@ -19,6 +19,16 @@ const BLOG_POSTS = [
     snippet: "Las constructoras juegan un papel muy importante como empresas facilitadoras del sector inmobiliario. Sin embargo, en ocasiones pueden llegar a incumplir con la entrega de tu vivienda, zonas comunes, o alterar los precios pactados...",
     image: "assets/blog_constructora_header.jpg",
     url: "blog-constructora-no-cumple.html"
+  },
+  {
+    id: "estrategias-legales",
+    title: "COMBINACIÓN DE TODAS LAS FORMAS DE LUCHA JURÍDICA LEGALES Y LEGÍTIMAS: ESTRATEGIAS LEGALES PARA NUESTROS CLIENTES",
+    category: "Estrategia",
+    date: "20 jun 2026",
+    readTime: "8 min de lectura",
+    snippet: "En el Grupo Jurídico Legal de Colombia SAS entendemos que cada caso es único. Conozca nuestra visión sobre la combinación de todas las formas de lucha jurídica legales y legítimas para proteger su patrimonio y derechos.",
+    image: "assets/blog_estrategias_header.jpg",
+    url: "blog-estrategias-legales.html"
   }
 ];
 
