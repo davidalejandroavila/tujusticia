@@ -61,25 +61,8 @@
       </header>
 
       <div class="page-content-wrapper">
-        <!-- Post 1 -->
-        <article class="article-card">
-          <div class="article-meta">20 de Junio, 2026 | Derecho Administrativo</div>
-          <h2 class="article-title">La importancia de la Acción de Tutela en Colombia</h2>
-          <p class="article-text">
-            La acción de tutela es el mecanismo constitucional más potente que tienen los ciudadanos en Colombia para reclamar ante los jueces la protección inmediata de sus derechos fundamentales. Explicamos detalladamente cuándo procede y cómo redactarla correctamente.
-          </p>
-          <a href="#" class="btn-gold" style="padding: 8px 20px; font-size: 0.75rem;">Leer Más</a>
-        </article>
-
-        <!-- Post 2 -->
-        <article class="article-card">
-          <div class="article-meta">15 de Junio, 2026 | Administración de Inmuebles</div>
-          <h2 class="article-title">Derechos y Obligaciones en Contratos de Arrendamiento Comercial</h2>
-          <p class="article-text">
-            El arrendamiento de locales comerciales en Colombia se rige por normas especiales del Código de Comercio que protegen al comerciante. Conozca las causales de desahucio, el derecho de renovación y la regulación sobre el incremento del canon.
-          </p>
-          <a href="#" class="btn-gold" style="padding: 8px 20px; font-size: 0.75rem;">Leer Más</a>
-        </article>
+        <!-- Contenedor de posts dinámicos -->
+        <div id="blog-posts-container"></div>
       </div>
     </main>
 
@@ -105,6 +88,9 @@
     </footer>
   </div>
 
+  <!-- Carga de datos del blog primero -->
+  <script src="js/blog-posts.js"></script>
+  <!-- Lógica general del sitio -->
   <script src="js/main.js"></script>
 </body>
 </html>

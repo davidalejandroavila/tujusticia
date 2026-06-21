@@ -6,6 +6,58 @@
   <meta name="description" content="Tu Justicia - Grupo Jurídico Legal de Colombia. Asesoría jurídica experta, administración de inmuebles, derecho administrativo, comercial y defensa legal.">
   <title>Tu Justicia - Grupo Jurídico Legal de Colombia</title>
   <link rel="stylesheet" href="css/styles.css">
+  <style>
+    /* Styling for the forms inside the modal */
+    .waitlist-form-group {
+      margin-bottom: 15px;
+    }
+    
+    .waitlist-form-label {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--accent-gold);
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+    
+    .waitlist-form-control {
+      width: 100%;
+      background-color: #080718;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      padding: 10px 14px;
+      color: var(--text-white);
+      font-family: inherit;
+      font-size: 0.9rem;
+      transition: var(--transition-smooth);
+    }
+    
+    .waitlist-form-control:focus {
+      outline: none;
+      border-color: var(--accent-gold);
+      box-shadow: 0 0 10px rgba(197, 155, 39, 0.3);
+    }
+    
+    .waitlist-btn {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(135deg, var(--accent-gold) 0%, #a47b19 100%);
+      color: var(--primary-bg);
+      font-weight: 700;
+      border-radius: 6px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 0.9rem;
+      box-shadow: 0 4px 15px rgba(197, 155, 39, 0.3);
+      transition: var(--transition-smooth);
+      margin-top: 10px;
+    }
+    
+    .waitlist-btn:hover {
+      background: linear-gradient(135deg, var(--accent-gold-hover) 0%, var(--accent-gold) 100%);
+      transform: translateY(-2px);
+    }
+  </style>
 </head>
 <body>
 
@@ -59,8 +111,10 @@
       </div>
     </aside>
 
-    <!-- CONTENIDO PRINCIPAL (HERO SECTION DE INICIO) -->
+    <!-- CONTENIDO PRINCIPAL -->
     <main>
+      
+      <!-- HERO SECTION -->
       <section class="hero">
         <div class="hero-logo-container">
           <img src="assets/logo_circular.jpg" alt="Logo Circular Justicia App" class="hero-logo">
@@ -72,6 +126,124 @@
         </p>
         <a href="contacto.html" class="btn-gold">Consulta Gratuita</a>
       </section>
+
+      <!-- SECCIÓN: BANNER 10 AÑOS -->
+      <section class="home-section" style="background-color: var(--secondary-bg);">
+        <div class="anniversary-banner-container">
+          <img src="assets/banner_10_anos.png" alt="Cumplimos 10 años en Tu Justicia">
+        </div>
+      </section>
+
+      <!-- SECCIÓN: TEXTO DE LIDERAZGO -->
+      <section class="home-section">
+        <div class="leaders-text-container">
+          <div class="leaders-text-content">
+            <h3>Asesoría y Representación de Confianza</h3>
+            <p>
+              ¡Somos líderes en asesorías y representación legal! Integramos y articulamos para poner a su servicio, el conocimiento y la experiencia jurídica de un equipo selecto de abogados. Con ello lograr el éxito en su proceso, por medio de metodologías, estrategias y técnicas con la ayuda de tecnología.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECCIÓN: HOY JUEGAS COLOMBIANO -->
+      <section class="home-section" style="background-color: var(--secondary-bg);">
+        <div class="rights-grid">
+          <div class="rights-banner-container">
+            <img src="assets/banner_derechos.png" alt="Hoy juegas colombiano por tus derechos">
+          </div>
+          <div class="rights-content">
+            <h2>¡Hoy Juegas Colombiano <span>por tus Derechos!</span></h2>
+            <p>
+              Defiende tus derechos con pasión, orgullo y valentía. La injusticia se combate con preparación legal, estrategia y la firme determinación de resguardar lo que te pertenece. Nuestro equipo de abogados te acompaña en cada paso para asegurar una defensa inquebrantable de tus intereses patrimoniales y constitucionales.
+            </p>
+            <a href="contacto.html" class="btn-gold">Defiende tus Derechos</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECCIÓN DINÁMICA DEL BLOG (Se oculta/muestra por JS) -->
+      <section class="home-section" id="home-blog-section" style="display: none;">
+        <div class="home-section-title-container">
+          <div class="home-section-title-badge">INFÓRMATE CON NUESTRO BLOG</div>
+        </div>
+        <div id="blog-posts-container-home" class="blog-grid-home"></div>
+      </section>
+
+      <!-- SECCIÓN MEJORADA DE REDES SOCIALES -->
+      <section class="home-section" style="background-color: var(--secondary-bg);">
+        <div class="home-section-title-container">
+          <div class="home-section-title-badge">SÍGUENOS EN REDES SOCIALES</div>
+        </div>
+        
+        <div class="socials-grid">
+          
+          <!-- Mock Facebook -->
+          <div class="social-card">
+            <div class="social-card-header facebook">Facebook</div>
+            <div class="social-profile">
+              <div class="social-avatar">
+                <img src="assets/logo_circular.jpg" alt="Avatar">
+              </div>
+              <div class="social-profile-info">
+                <h4>CorpoColombianos</h4>
+                <p>630 seguidores • ONG</p>
+              </div>
+              <button class="social-btn-follow" style="margin-left: auto;">Seguir</button>
+            </div>
+            <div class="social-card-content">
+              Lideramos un equipo de Profesionales con creatividad, conocimiento e innovación. Para Asesorar y Representar a los Ciudadanos.
+              <br>
+              📞 <strong>+57 311 8823775</strong>
+              <div class="social-mock-post-image">
+                <img src="assets/banner_derechos.png" alt="Mock Post Facebook">
+              </div>
+            </div>
+          </div>
+
+          <!-- Mock Twitter / X -->
+          <div class="social-card">
+            <div class="social-card-header twitter">Twitter / X</div>
+            <div class="social-profile">
+              <div class="social-avatar">
+                <img src="assets/logo_circular.jpg" alt="Avatar">
+              </div>
+              <div class="social-profile-info">
+                <h4>CorpoColombianos</h4>
+                <p>@CorpoColombiano</p>
+              </div>
+              <span style="margin-left: auto; color: var(--accent-gold); font-size: 1.2rem;">𝕏</span>
+            </div>
+            <div class="social-card-content">
+              Conoce la <strong>PLATAFORMA DE FAMILIA</strong>. La primera iniciativa en Colombia para la defensa de los derechos de las familias. Ingresa y conoce más:
+              <a href="#" style="color: var(--accent-gold);">corpocolombianos.org/plataforma-vir...</a>
+              <div class="social-mock-post-image" style="height: 120px; background-color: #050b11; position: relative;">
+                <div class="youtube-mock-player" style="width: 100%; height: 100%;"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mock YouTube -->
+          <div class="social-card">
+            <div class="social-card-header youtube">YouTube</div>
+            <div class="social-profile">
+              <div class="social-avatar" style="background-color: red; color: white;">YT</div>
+              <div class="social-profile-info">
+                <h4>Tu Justicia Oficial</h4>
+                <p>Canal Jurídico</p>
+              </div>
+            </div>
+            <div class="social-card-content" style="display: flex; flex-direction: column; justify-content: space-between;">
+              <div>
+                Suscríbete a nuestro canal para recibir análisis jurídicos en video, explicaciones de leyes y actualidad de procesos en Colombia.
+              </div>
+              <div class="youtube-mock-player" style="margin-top: 20px; border-radius: 6px; overflow: hidden;"></div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
     </main>
 
     <!-- FOOTER AL FINAL DE LA PÁGINA -->
@@ -100,6 +272,59 @@
 
   </div>
 
+  <!-- EMERGENTE DE LISTA DE ESPERA (MODAL) -->
+  <div class="waitlist-modal" id="waitlist-modal">
+    <div class="waitlist-modal-backdrop"></div>
+    <div class="waitlist-box">
+      <!-- Botón cerrar -->
+      <button class="waitlist-close-btn" id="waitlist-close" aria-label="Cerrar modal">&times;</button>
+      
+      <!-- Encabezado Scrolling -->
+      <div class="waitlist-marquee">
+        <div>LISTA DE ESPERA 💣 LISTA DE ESPERA 💣 LISTA DE ESPERA 💣 LISTA DE ESPERA 💣</div>
+      </div>
+      
+      <!-- Reloj de Cuenta Regresiva de 3 Minutos -->
+      <div class="waitlist-timer-bar">
+        <span id="timer-label">⏰ OPORTUNIDAD POR TIEMPO LIMITADO:</span>
+        <span class="waitlist-timer-clock" id="timer-clock">03:00</span>
+      </div>
+      
+      <!-- Cuerpo del Modal -->
+      <div class="waitlist-body">
+        <h3 class="waitlist-title">Accede a beneficios Exclusivos al ser parte de nuestra lista prioritaria</h3>
+        <p class="waitlist-subtitle">CUÉNTANOS TU CASO - FORMULARIO DE INSCRIPCIÓN - MANTENTE INFORMADO</p>
+        
+        <form id="waitlist-form">
+          <div class="waitlist-form-group">
+            <label class="waitlist-form-label" for="wl-name">Nombre Completo *</label>
+            <input type="text" id="wl-name" class="waitlist-form-control" placeholder="Ingresa tu nombre..." required>
+          </div>
+          
+          <div class="waitlist-form-group">
+            <label class="waitlist-form-label" for="wl-email">Email *</label>
+            <input type="email" id="wl-email" class="waitlist-form-control" placeholder="correo@ejemplo.com" required>
+          </div>
+          
+          <div class="waitlist-form-group">
+            <label class="waitlist-form-label" for="wl-phone">Teléfono</label>
+            <input type="tel" id="wl-phone" class="waitlist-form-control" placeholder="Ej: 3001234567">
+          </div>
+          
+          <div class="waitlist-form-group">
+            <label class="waitlist-form-label" for="wl-case">Cuéntanos tu Caso</label>
+            <textarea id="wl-case" rows="3" class="waitlist-form-control" placeholder="Escribe aquí los detalles de tu problema legal..."></textarea>
+          </div>
+          
+          <button type="submit" class="waitlist-btn" id="waitlist-submit-btn">Enviar y Obtener Asesoría Gratis</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Carga de datos del blog -->
+  <script src="js/blog-posts.js"></script>
+  <!-- Lógica general del sitio -->
   <script src="js/main.js"></script>
 </body>
 </html>
